@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d15d7921-518f-4851-bf8b-4b76ba43092c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/rosell-dk/webp-convert" />
+      <path value="$PROJECT_DIR$/vendor/coffeecode/cropper" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/rosell-dk/image-mime-type-guesser" />
+      <path value="$PROJECT_DIR$/vendor/coffeecode/router" />
+      <path value="$PROJECT_DIR$/vendor/coffeecode/uploader" />
+      <path value="$PROJECT_DIR$/vendor/coffeecode/optimizer" />
+      <path value="$PROJECT_DIR$/vendor/coffeecode/paginator" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/matthiasmullie/minify" />
+      <path value="$PROJECT_DIR$/vendor/matthiasmullie/path-converter" />
+      <path value="$PROJECT_DIR$/vendor/league/plates" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1yVUd1beJzv2COLV0DDoLCZZgjn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\atitude\shared\styles" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\atitude" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d15d7921-518f-4851-bf8b-4b76ba43092c" name="Default Changelist" comment="" />
+      <created>1632336332485</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632336332485</updated>
+      <workItem from="1632336333536" duration="1760000" />
+      <workItem from="1632338116464" duration="1787000" />
+      <workItem from="1632339925391" duration="1790000" />
+      <workItem from="1632341738331" duration="1825000" />
+      <workItem from="1632343635684" duration="891000" />
+      <workItem from="1632407731456" duration="7000" />
+      <workItem from="1632577689679" duration="2289000" />
+      <workItem from="1632582983901" duration="1786000" />
+      <workItem from="1632584856732" duration="1899000" />
+      <workItem from="1632586777016" duration="730000" />
+      <workItem from="1632598055230" duration="1814000" />
+      <workItem from="1632599893808" duration="1059000" />
+      <workItem from="1632856564404" duration="8000" />
+      <workItem from="1632860087945" duration="488000" />
+      <workItem from="1632862441051" duration="1571000" />
+      <workItem from="1632866075499" duration="1007000" />
+      <workItem from="1632936989163" duration="1784000" />
+      <workItem from="1632938807500" duration="1609000" />
+      <workItem from="1632940791181" duration="862000" />
+      <workItem from="1633188074083" duration="2109000" />
+      <workItem from="1633190214791" duration="13000" />
+      <workItem from="1633375604925" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="635" y="202" key="FileChooserDialogImpl" timestamp="1632941829543">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="635" y="202" key="FileChooserDialogImpl/0.0.1707.920@0.0.1707.920" timestamp="1632941829543" />
+    <state x="690" y="384" key="NewPhpFileDialog" timestamp="1633188249760">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="690" y="384" key="NewPhpFileDialog/0.0.1707.920@0.0.1707.920" timestamp="1633188249760" />
+  </component>
+</project>

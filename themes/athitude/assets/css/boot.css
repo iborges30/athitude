@@ -1,0 +1,188 @@
+/***************************************
+*************** RESETS GERAIS***********
+****************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+}
+
+/***************************************
+*************** OVERFLOW ***********
+****************************************/
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/***************************************
+*************** FONTS ***********
+****************************************/
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+/***************************************
+*************** ALINHAMENTO ***********
+****************************************/
+.all {
+    width: 100%;
+}
+
+.container {
+    width: 768px;
+    max-width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/***************************************
+*************** COLUNAS ***********
+****************************************/
+.col-1 {
+    flex-basis: 100%;
+}
+
+.col-2 {
+    flex-basis: 50%;
+}
+
+.col-3 {
+    flex-basis: 33.33%;
+}
+
+.col-4 {
+    flex-basis: 25%;
+}
+
+.col-5 {
+    flex-basis: 20%
+}
+
+.col-30 {
+    flex-basis: 30%;
+}
+
+.col-40 {
+    flex-basis: 40%;
+}
+
+.col-60 {
+    flex-basis: 60%;
+}
+
+.col-70 {
+    flex-basis: 70%;
+}
+
+.col-90 {
+    flex-basis: 90%;
+}
+
+.col-10 {
+    flex-basis: 10%;
+}
+
+/***************************************
+*************** COLUNAS ***********
+****************************************/
+.text-dark {
+    color: #0F0F1E;
+}
+
+.text-gray {
+    color: #bebebe;
+}
+
+.text-default {
+    color: #0F0F1E;
+}
+
+.text-white {
+    color: #F7F7F7;
+}
+
+/***************************************
+*************** ALINHAMENTO ***********
+****************************************/
+.center {
+    text-align: center
+}
+
+.lef {
+    text-align: left
+}
+
+.right {
+    text-align: right
+}
+
+/***************************************
+*************** DISPLAY ***********
+****************************************/
+.ds-none {
+    display: none;
+}
+
+.ds-block {
+    display: block;
+}
+
+.ds-flex {
+    display: flex;
+}
+
+/***************************************
+*************** MARGINS ***********
+****************************************/
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mt-60{
+    margin-top: 60px;
+}
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mtb-30 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
