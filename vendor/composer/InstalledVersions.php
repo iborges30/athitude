@@ -14,12 +14,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'c51f12a82027ba7d298e366725b562b7fd8d997f',
     'name' => 'upinside/fsphp',
   ),
   'versions' => 
@@ -125,12 +125,12 @@ private static $installed = array (
     ),
     'upinside/fsphp' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'c51f12a82027ba7d298e366725b562b7fd8d997f',
     ),
   ),
 );

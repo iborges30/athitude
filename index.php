@@ -154,6 +154,12 @@ $route->post("/notifications/list", "Notifications:list");
 **************CATEGORY  ************
 *********************** ************
 *********************** ************/
+//PRODUTOS
+//PRODUTOS
+$route->get("/product/home", "ProductController:home");
+$route->get("/product/product", "ProductController:show");
+
+//CATEGORIAS
 $route->get("/category/home", "CategoryController:home");
 $route->get("/category/home/{page}", "CategoryController:home");
 $route->get("/category/categories", "CategoryController:categories");
@@ -161,7 +167,7 @@ $route->get("/category/categories/{id}", "CategoryController:categories");
 
 $route->post("/category/categories", "CategoryController:categories");
 $route->post("/category/categories/{id}", "CategoryController:categories");
-$route->post("/category/products", "CategoryController:products");
+$route->post("/category/product", "CategoryController:product");
 
  
 //FABRICANTES
@@ -171,8 +177,11 @@ $route->get("/brand/brands", "BrandController:brands");
 $route->get("/brand/brands/{id}", "BrandController:brands");
 
 $route->post("/brand/brands", "BrandController:brands");
-$route->post("/brand/products", "BrandController:products");
+$route->post("/brand/product", "BrandController:product");
 $route->post("/brand/brands/{id}", "BrandController:brands");
+
+
+
 
 
 //END ADMIN

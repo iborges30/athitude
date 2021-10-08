@@ -53,6 +53,11 @@ echo $nav("Usuários", "fas fa-fw fa-user", [
     "Novo Usuário" => "users/user"
 ]);
 
+// Control
+echo $nav("Produtos", "fas fa-code-branch", [
+    "Produtos" => "product/home",
+    "Novo produto" => "product/product"
+]);
 
 // Usuários
 echo $nav("Categorias", "far fa-folder", [
