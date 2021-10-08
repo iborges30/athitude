@@ -52,3 +52,15 @@ echo $nav("Usuários", "fas fa-fw fa-user", [
     "Usuários" => "users/home",
     "Novo Usuário" => "users/user"
 ]);
+
+
+// Usuários
+echo $nav("Categorias", "far fa-folder", [
+    "Categorias" => "category/home",
+    "Nova Categoria" => "category/category"
+]);
+
+echo $nav("Fabricantes", "fas fa-copyright", [
+    "Fabricantes" => "brand/home",
+    "Novo fabricante" => "brand/brands"
+]);

@@ -10,8 +10,8 @@ define("CONF_DB_NAME", "athitude");
 /**
  * PROJECT URLs
  */
-define("CONF_URL_BASE", "https://localhost/atitude");
-define("CONF_URL_TEST", "https://localhost/atitude");
+define("CONF_URL_BASE", "https://localhost/athitude");
+define("CONF_URL_TEST", "https://localhost/athitude");
 
 /**
  * SITE

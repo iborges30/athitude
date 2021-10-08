@@ -148,6 +148,33 @@ $route->post("/users/user/{user_id}", "Users:user");
 $route->post("/notifications/count", "Notifications:count");
 $route->post("/notifications/list", "Notifications:list");
 
+
+//SISTEMA
+/********************** ************
+**************CATEGORY  ************
+*********************** ************
+*********************** ************/
+$route->get("/category/home", "CategoryController:home");
+$route->get("/category/home/{page}", "CategoryController:home");
+$route->get("/category/categories", "CategoryController:categories");
+$route->get("/category/categories/{id}", "CategoryController:categories");
+
+$route->post("/category/categories", "CategoryController:categories");
+$route->post("/category/categories/{id}", "CategoryController:categories");
+$route->post("/category/products", "CategoryController:products");
+
+ 
+//FABRICANTES
+$route->get("/brand/home", "BrandController:home");
+$route->get("/brand/home/{page}", "BrandController:home");
+$route->get("/brand/brands", "BrandController:brands");
+$route->get("/brand/brands/{id}", "BrandController:brands");
+
+$route->post("/brand/brands", "BrandController:brands");
+$route->post("/brand/products", "BrandController:products");
+$route->post("/brand/brands/{id}", "BrandController:brands");
+
+
 //END ADMIN
 $route->namespace("Source\App");
 
