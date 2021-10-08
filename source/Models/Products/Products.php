@@ -10,7 +10,7 @@ class Products extends Model
 {
     public function __construct()
     {
-        parent::__construct("product", ["id"], ["name", "price", "description", "status", "weight", "depth", "width", "length"]);
+        parent::__construct("products", ["id"], ["name", "price", "description", "status", "weight", "depth", "width", "length"]);
     }
 
 

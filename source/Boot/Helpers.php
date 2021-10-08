@@ -466,7 +466,8 @@ function photo_img(
     string $defaultImage = null,
     string $class = null,
     string $style = null
-): string {
+): string
+{
     $defaultImage = (!empty($defaultImage) ? $defaultImage : CONF_IMAGE_NO_AVAILABLE_16BY9);
     $class = (!empty($class) ? ' class="' . $class . '"' : null);
     $style = (!empty($style) ? ' style="' . $style . '"' : null);
@@ -553,4 +554,30 @@ function alert_info(string $message, string $class = null, string $style = null,
     $icon = '<i class="' . CONF_ALERT_INFO["icon"] . '"></i>';
     $style = (!empty($style) ? ' style="' . $style . '"' : null);
     return '<' . $htmlTag . ' class="' . $class . '" role="alert"' . $style . '>' . $icon . $message . '</' . $htmlTag . '>';
+}
+
+/*
+ * SALVA VALOR MOEDA
+ */
+function saveMoney($getValor)
+{
+    $source = array('.', ',');
+    $replace = array('', '.');
+    $valor = str_replace($source, $replace, $getValor); //remove os pontos e substitui a virgula pelo ponto
+    return $valor; //retorna o valor formatado para gravar no banco
+}
+
+/**
+ * ###################################
+ * ###   RETORNA STATUS  ###
+ * ###################################
+ */
+function status($data = null)
+{
+    $status = ["active" => "Ativo", "inactive" => "Inativo"];
+    if (!empty($data)) {
+        return $status[$data];
+    } else {
+        return $status;
+    }
 }

@@ -39,7 +39,7 @@
                         <div class="card shadow mb-4">
                             <div class="card-profile-image mt-4 col-md-12 text-center">
                                 <figure class="figure">
-                                    <img src="<?= theme("/assets/images/produto.jpg", CONF_VIEW_THEME);?>"
+                                    <img src="<?= theme("/assets/images/produto.jpg", CONF_VIEW_THEME); ?>"
                                          alt="Burguer Delivery" class="js-profile  image">
                                 </figure>
                             </div>
@@ -49,8 +49,8 @@
                     <div class="col-lg-8 order-lg-1">
                         <div class="card shadow mb-4">
                             <div class="card-body">
-                                <form action="#" method="post" name="formProduct">
-                                    <input type="hidden" name="action" value="update">
+                                <form action="<?= url("/admin/product/product");?>" method="post" name="formProduct">
+                                    <input type="hidden" name="action" value="create">
                                     <div class="pl-lg-1">
                                         <div class="row">
                                             <div class="col-md-3">
@@ -58,7 +58,6 @@
                                                     <label class="form-control-label" for="name">Código
                                                         <span class="small text-danger">*</span></label>
                                                     <input type="text" id="code" class="form-control" name="code"
-
                                                            placeholder="Informe o nome do código do produto">
                                                 </div>
                                             </div>
@@ -79,9 +78,16 @@
                                                     <label class="form-control-label" for="name">Categoria
                                                         <span class="small text-danger">*</span></label>
                                                     <select name="category_id" id="" class="form-control">
-                                                        <option value="">Categoria A</option>
-                                                        <option value="">Categoria A</option>
-                                                        <option value="">Categoria A</option>
+                                                        <?php
+                                                        if ($categories):
+                                                            foreach ($categories as $p):
+                                                                ?>
+                                                                <option value="<?=$p->id;?>"><?=$p->category;?></option>
+                                                            <?php
+                                                            endforeach;
+                                                        endif;
+                                                        ?>
+                                                        <option value="new">Nova Categoria</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -91,9 +97,16 @@
                                                     <label class="form-control-label" for="name">Fabricante
                                                         <span class="small text-danger">*</span></label>
                                                     <select name="brand_id" id="" class="form-control">
-                                                        <option value="">Categoria A</option>
-                                                        <option value="">Categoria A</option>
-                                                        <option value="">Categoria A</option>
+                                                        <?php
+                                                        if ($brands):
+                                                            foreach ($brands as $p):
+                                                                ?>
+                                                                <option value="<?=$p->id;?>"><?=$p->name;?></option>
+                                                            <?php
+                                                            endforeach;
+                                                        endif;
+                                                        ?>
+                                                        <option value="new">Novo Fabricante</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -112,10 +125,14 @@
                                                 <div class="form-group focused">
                                                     <label class="form-control-label" for="name">Status
                                                         <span class="small text-danger">*</span></label>
-                                                    <select name="brand_id" id="" class="form-control">
-                                                        <option value="">Categoria A</option>
-                                                        <option value="">Categoria A</option>
-                                                        <option value="">Categoria A</option>
+                                                    <select name="status" id="" class="form-control">
+                                                        <?php
+                                                        foreach (status() as $key=>$p):
+                                                            ?>
+                                                            <option value="<?= $key;?>"><?= $p;?></option>
+                                                        <?php
+                                                        endforeach;
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
