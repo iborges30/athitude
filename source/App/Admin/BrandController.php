@@ -140,7 +140,7 @@ class BrandController extends Admin
 
     //CRIA A CATEGORIA NO FORM DO PRODUTO
 
-    public function products(?array $data): void
+    public function brandCreateModal(?array $data): void
     {
         $brand = new Brands();
         $brand->name = $data["brand"];

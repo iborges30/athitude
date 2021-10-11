@@ -120,8 +120,100 @@ class ProductController extends Admin
                 $code->save();
             }
             $this->message->success("Produto cadastrado com sucesso...")->flash();
-            echo json_encode(["redirect" => url("/admin/product/products")]);
+            echo json_encode(["redirect" => url("/admin/product/edit/{$create->id}")]);
             return;
+        }
+    }
+
+
+    public function edit(?array $data): void
+    {
+        $productId = filter_var($data["id"], FILTER_VALIDATE_INT);
+        //CATEGORIAS
+        $categories = (new ProductsCategories())->find();
+        //FABRICANTES
+        $brands = (new Brands())->find();
+        $product = (new Products())->findById($productId);
+
+        if (empty($product)) {
+            $this->message->warning("Opps. Você tentou acessar um produto que não existe.")->flash();
+            echo json_encode(["redirect" => url("/admin/product/home")]);
+            return;
+        }
+
+
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " | Novo produto",
+            CONF_SITE_DESC,
+            url("/admin"),
+            url("/admin/assets/images/image.jpg"),
+            false
+        );
+
+        echo $this->view->render("widgets/product/edit", [
+            "app" => "",
+            "head" => $head,
+            "categories" => $categories->order("category ASC")->fetch(true),
+            "brands" => $brands->order("name ASC")->fetch(true),
+            "product" => $product
+        ]);
+    }
+
+    public function update(?array $data): void
+    {
+        if (!empty($data["action"]) && $data["action"] == "update") {
+            $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+            $update = (new Products())->findById($data["id"]);
+
+            if (!$update) {
+                $this->message->error("Você tentou editar um produto que não existe ou foi removido")->flash();
+                echo json_encode(["redirect" => url("/admin/product/home")]);
+                return;
+            }
+
+            $update->name = $data["name"];
+            $update->code = $data["code"];
+            $update->url = str_slug($data["name"]);
+            $update->price = saveMoney($data['price']);
+            $update->category_id = $data['category_id'];
+            $update->brand_id = $data['brand_id'];
+            $update->code = $data['code'];
+            $update->status = $data['status'];
+            $update->length = $data['length'];
+            $update->width = $data['width'];
+            $update->weight = saveMoney($data['weight']);
+            $update->depth = $data['depth'];
+            $update->description = $data['description'];
+            $update->user_id = user()->id;
+            $update->lastupdate = date("Y-m-d H:i:s");
+
+            //upload cover
+            if (!empty($_FILES["image"])) {
+                $files = $_FILES["image"];
+                $upload = new Upload();
+                $image = $upload->image($files, $update->name);
+
+                if (!$image) {
+                    $json["message"] = $upload->message()->render();
+                    echo json_encode($json);
+                    return;
+                }
+
+                $update->image = $image;
+            }
+
+            if (!$update->save()) {
+                $json["message"] = $update->message()->render();
+                echo json_encode($json);
+                return;
+            }
+
+            //ATUALIZA O ESTOQUE
+            $json["message"] = $this->message->success("Produto atualizado com sucesso...")->render();
+            echo json_encode($json);
+            return;
+
         }
     }
 }

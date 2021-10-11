@@ -1,6 +1,7 @@
 // JQUERY INIT
 
 $(function () {
+
     var ajaxResponseBaseTime = 3;
     var ajaxResponseRequestError = "<div class='message error icon-warning'>Desculpe mas não foi possível processar sua requisição...</div>";
 
@@ -231,8 +232,124 @@ $(function () {
         $(this).effect("bounce").fadeOut(1);
     });
 
-    // MAKS
 
+    //############# POSTS
+
+    //CAPA VIEW
+    $('.wc_loadimage').change(function () {
+        var input = $(this);
+        var target = $('.' + input.attr('name'));
+        var fileDefault = target.attr('default');
+
+        if (!input.val()) {
+            target.fadeOut('fast', function () {
+                $(this).attr('src', fileDefault).fadeIn('slow');
+            });
+            return false;
+        }
+
+        if (this.files && (this.files[0].type.match("image/jpeg") || this.files[0].type.match("image/png"))) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                target.fadeOut('fast', function () {
+                    $(this).attr('src', e.target.result).width('100%').fadeIn('fast');
+                });
+            };
+            reader.readAsDataURL(this.files[0]);
+        } else {
+            Trigger('<div class="trigger trigger_alert trigger_ajax"><b class="icon-warning">ERRO AO SELECIONAR:</b> O arquivo <b>' + this.files[0].name + '</b> não é válido! <b>Selecione uma imagem JPG ou PNG!</b></div>');
+            target.fadeOut('fast', function () {
+                $(this).attr('src', fileDefault).fadeIn('slow');
+            });
+            input.val('');
+            return false;
+        }
+    });
+
+    //ABRE A MODAL PARA GERAR NOVO FABRICANTE
+    $(".jsc-brand").change(function () {
+        var brand = $(this).val();
+        if (brand === 'new') {
+            $('#new-brand').modal("show");
+        }
+    });
+
+
+    $("form[name='formBrandproducts']").submit(function () {
+        var dados = $(this).serialize();
+        var url = $(this).attr("action");
+
+        $.ajax({
+            url: url,
+            method: 'post',
+            dataType: 'json',
+            data: dados,
+            beforeSend: function () {
+                $(".csw-load").fadeIn("fast");
+            },
+            success: function (response) {
+                if (response.message == 'error') {
+                    alert("Verifique o nome do fabricante. É possívelmente ela já existe no sistema.");
+                } else {
+                    $("#new-brand").modal("hide");
+                    $(".jsc-brand").append("<option selected value='" + response.value + "'>" + response.name + "</option>");
+                }
+            },
+            complete: function () {
+                $(".csw-load").fadeOut("fast");
+            }
+        });
+        return false;
+    });
+
+
+    //ABRE A MODAL PARA GERAR NOVA CATEGORIA
+    $(".jsc-category").change(function () {
+        var category = $(this).val();
+        if (category === 'category') {
+            $('#new-category').modal("show");
+        }
+    });
+
+
+    //GERA A NOVA CATEGORIA
+    $("form[name='formCategoryProducts']").submit(function() {
+        var dados = $(this).serialize();
+        var url = $(this).attr("action");
+
+        $.ajax({
+            url: url,
+            method: 'post',
+            dataType: 'json',
+            data: dados,
+            beforeSend: function() {
+                $(".csw-load").fadeIn("fast");
+            },
+            success: function(response) {
+                if (response.message == 'error') {
+                    alert("Verifique o nome da categoria informada, possívelmente ela já existe no sistema.");
+                } else {
+                    $("#new-category").modal("hide");
+                    $(".jsc-category").append("<option selected value='" + response.value + "'>" + response.name + "</option>");
+                }
+            },
+            complete: function() {
+                $(".csw-load").fadeOut("fast");
+            }
+        });
+
+        return false;
+    });
+
+    //ABRE A MODAL DO ESTOQUE
+    $(".jsc-inventory-open-modal").click(function (){
+        var productId = $(this).data("product-id");
+        console.log(productId);
+        $("#new-inventory").modal("show");
+        return false;
+    });
+
+    // MAKS
     $(".mask-date").mask('00/00/0000');
     $(".mask-datetime").mask('00/00/0000 00:00');
     $(".mask-month").mask('00/0000', {reverse: true});

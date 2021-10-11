@@ -21,11 +21,18 @@
   <component name="ChangeListManager">
     <list default="true" id="81c51dab-f435-40ad-aa2d-36828399834e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/App/Admin/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Admin/BrandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/App/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Admin/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Boot/Helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/Boot/Helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/Models/Products/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/Models/Products/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/js/engine.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/assets/js/engine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/assets/script.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/assets/style.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/sb-admin/widgets/product/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/widgets/product/products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,17 +70,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/source/Models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/themes/sb-admin/widgets/product" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\athitude\source\App\Admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\widgets\product" />
+      <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\assets\images" />
       <recent name="C:\xampp\htdocs\athitude\source\Models" />
       <recent name="C:\xampp\htdocs\athitude\source\App" />
       <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\widgets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\athitude\source\App\Admin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,6 +99,12 @@
       <workItem from="1633724629760" duration="1786000" />
       <workItem from="1633726438280" duration="1748000" />
       <workItem from="1633728391966" duration="1457000" />
+      <workItem from="1633966466838" duration="1776000" />
+      <workItem from="1633968275233" duration="895000" />
+      <workItem from="1633984999977" duration="599000" />
+      <workItem from="1633989527388" duration="1790000" />
+      <workItem from="1633991342072" duration="1785000" />
+      <workItem from="1633993150851" duration="200000" />
     </task>
     <servers />
   </component>
@@ -106,5 +122,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="384" key="NewPhpFileDialog" timestamp="1633992657835">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="690" y="384" key="NewPhpFileDialog/0.0.1707.920@0.0.1707.920" timestamp="1633992657835" />
   </component>
 </project>

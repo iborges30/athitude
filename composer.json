@@ -21,7 +21,8 @@
       "source/Boot/Config.php",
       "source/Boot/Helpers.php",
       "source/Boot/Minify/Web.php",
-      "source/Boot/Minify/App.php"
+      "source/Boot/Minify/App.php",
+      "source/Boot/Minify/Admin.php"
     ]
   },
   "require": {
