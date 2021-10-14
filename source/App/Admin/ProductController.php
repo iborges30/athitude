@@ -6,6 +6,8 @@ namespace Source\App\Admin;
 
 use Source\Models\Brands\Brands;
 use Source\Models\Category;
+use Source\Models\Gallery\Gallery;
+use Source\Models\Inventory\Inventory;
 use Source\Models\ProductGallery\ProductGallery;
 use Source\Models\Products\Products;
 use Source\Models\ProductsCategories\ProductsCategories;
@@ -134,6 +136,8 @@ class ProductController extends Admin
         //FABRICANTES
         $brands = (new Brands())->find();
         $product = (new Products())->findById($productId);
+        $inventory = (new Inventory())->find("product_id = :p", "p={$productId}");
+        $gallery = (new Gallery())->find("product_id = :p", "p={$productId}");
 
         if (empty($product)) {
             $this->message->warning("Opps. Você tentou acessar um produto que não existe.")->flash();
@@ -155,10 +159,13 @@ class ProductController extends Admin
             "head" => $head,
             "categories" => $categories->order("category ASC")->fetch(true),
             "brands" => $brands->order("name ASC")->fetch(true),
-            "product" => $product
+            "product" => $product,
+            "inventory" => $inventory->order("id DESC")->fetch(true),
+            "gallery" => $gallery->order("id DESC")->fetch(true)
         ]);
     }
 
+    //ATUALIZA PRODUTO
     public function update(?array $data): void
     {
         if (!empty($data["action"]) && $data["action"] == "update") {

@@ -313,7 +313,7 @@ $(function () {
 
 
     //GERA A NOVA CATEGORIA
-    $("form[name='formCategoryProducts']").submit(function() {
+    $("form[name='formCategoryProducts']").submit(function () {
         var dados = $(this).serialize();
         var url = $(this).attr("action");
 
@@ -322,10 +322,10 @@ $(function () {
             method: 'post',
             dataType: 'json',
             data: dados,
-            beforeSend: function() {
+            beforeSend: function () {
                 $(".csw-load").fadeIn("fast");
             },
-            success: function(response) {
+            success: function (response) {
                 if (response.message == 'error') {
                     alert("Verifique o nome da categoria informada, possívelmente ela já existe no sistema.");
                 } else {
@@ -333,7 +333,7 @@ $(function () {
                     $(".jsc-category").append("<option selected value='" + response.value + "'>" + response.name + "</option>");
                 }
             },
-            complete: function() {
+            complete: function () {
                 $(".csw-load").fadeOut("fast");
             }
         });
@@ -342,10 +342,159 @@ $(function () {
     });
 
     //ABRE A MODAL DO ESTOQUE
-    $(".jsc-inventory-open-modal").click(function (){
-        var productId = $(this).data("product-id");
-        console.log(productId);
+    $(".jsc-inventory-open-modal").click(function () {
         $("#new-inventory").modal("show");
+        return false;
+    });
+
+    //CADASTRA O ESTOQUE
+    $("form[name='formInventory']").submit(function () {
+        var dados = $(this).serialize();
+        var url = $(this).attr("action");
+        $.ajax({
+            url: url,
+            method: 'post',
+            dataType: 'json',
+            data: dados,
+            beforeSend: function () {
+                $(".csw-load").fadeIn("fast");
+            },
+            success: function (response) {
+                if (response.message) {
+                    $(".ajax_response_modal").text("").fadeIn("fast").text(response.message);
+                }
+
+                $(".jsc-table").append('<tr id="' + response.id + '"> <th scope="row">' + response.id + '</th> ' +
+                    '    <td>' + response.size + '</td>' +
+                    '    <td class="text-white">' +
+                    '        <span class="btn btn-circle shadow" style="background:' + response.color + '"></span>' +
+                    '    </td>' +
+                    '    <td>' + response.size + '</td>' +
+                    '    <td>' +
+                    '        <a href="' + response.url.replace("delete", "edit") + '" data-inventory-edit="' + response.id + '" class="btn btn-primary jsc-inventory-edit btn-circle btn-sm">' +
+                    '            <i class="fas fa-edit"></i>' +
+                    '        </a>' +
+                    '        <a data-delete-id="' + response.id + '" href="' + response.url + '" class="jsc-delete-inventory btn btn-danger btn-circle btn-sm">' +
+                    '            <i class="fas fa-trash"></i>' +
+                    '        </a>' +
+                    '    </td>' +
+                    '</tr>');
+                $("form[name='formInventory']").resetForm();
+            }, complete: function () {
+                $(".csw-load").fadeOut("fast");
+            }
+
+        });
+        return false;
+    });
+
+
+    //DELETA INVENTÁRIO
+    $("body").on("click", ".jsc-delete-inventory", function () {
+        var deleteId = $(this).data("delete-id");
+        var url = $(this).attr("href");
+        $.ajax({
+            url: url,
+            method: 'post',
+            data: {deleteId: deleteId},
+            dataType: 'json',
+            success: function (response) {
+                if (response.detele) {
+                    $("tr#" + response.id).fadeOut("fast");
+                }
+            }
+        });
+        return false;
+    });
+
+    //ABRE A MODAL DE EDIÇÃO
+    $("body").on("click", ".jsc-inventory-edit", function () {
+        var inventoryId = $(this).data("inventory-edit");
+        var url = $(this).attr("href");
+        $.ajax({
+            url: url,
+            method: 'post',
+            data: {inventoryId: inventoryId},
+            dataType: 'html',
+            success: function (response) {
+                $(".ajax-modal-edit-inventory").html(response);
+                $("#update-inventory").modal("show");
+            }
+        });
+        return false;
+    });
+
+    //ATUALIZA O INVENTÁRIO
+    $(".container-fluid").on("submit", 'form[name="formUpdateInvetory"]', function () {
+        var dados = $(this).serialize();
+        var url = $(this).attr("action");
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            data: dados,
+            method: 'post',
+            beforeSend: function () {
+                $(".csw-load").fadeIn("fast");
+            }, success: function (response) {
+                $("#update-inventory").modal("hide");
+                location.reload();
+            }, complete: function () {
+                $(".csw-load").fadeOut("fast");
+            }
+        });
+        return false;
+    });
+
+
+    // PARTE DA GALERIA
+    $('html').on('change', 'form[name="formGallery"]', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var form = $(this);
+        var BASE = 'https://localhost/athitude';
+        var url = $(this).attr("action");
+
+        console.log(url);
+
+        form.ajaxSubmit({
+            url: url,
+            dataType: 'json',
+            success: function (response) {
+                $.each(response.gallery, function (key, values) {
+
+                    $(".ajax-gallery").append('  ' +
+                        ' <div class="mt-5 mb-5 m-lg-5" id="g-' + values.id + '">' +
+                        '  <a href="../delete/' + values.id + '" data-id=" ' + values.id + ' " data-image="' + values.uri + '" class="jsc-delete-image-gallery">' +
+                        '  <figure class="figure">' +
+                        '<img width="120" height="120" src="' + BASE + '/storage/' + values.uri + '">' +
+                        '    </figure>' +
+                        '    </a>' +
+                        '   </div>');
+
+                });
+            }
+
+        })
+    });
+
+    //DELETE DA GALERIA
+    $("body").on("click", ".jsc-delete-image-gallery", function () {
+        var id = $(this).data("id");
+        var uri = $(this).attr("href");
+        var image = $(this).data("image");
+        var r = confirm("Você realmente deseja deletar essa imagem?");
+        if (r == true) {
+            $.ajax({
+                url: uri,
+                method: "Post",
+                dataType: 'json',
+                data: {id: id, image: image},
+                success: function (response) {
+                    $("#g-" + response.image).slideUp("fast");
+
+                }
+            });
+        }
         return false;
     });
 

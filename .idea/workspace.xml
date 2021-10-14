@@ -21,18 +21,20 @@
   <component name="ChangeListManager">
     <list default="true" id="81c51dab-f435-40ad-aa2d-36828399834e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/App/Admin/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Admin/BrandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/App/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/images/2021/10/teste-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/storage/images/2021/10/teste-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/images/2021/10/teste.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/_admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/assets/css/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/images/bg-login-image.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/js/engine.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/assets/js/engine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/assets/script.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/sb-admin/assets/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/assets/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/widgets/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/widgets/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/widgets/product/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/widgets/product/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/widgets/product/modal_inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/widgets/product/modal_inventory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/sb-admin/widgets/product/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/widgets/product/products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,17 +72,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/themes/sb-admin/widgets/product" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/source/App/Admin" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\athitude\source\App\Admin" />
       <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\widgets\product" />
       <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\assets\images" />
       <recent name="C:\xampp\htdocs\athitude\source\Models" />
       <recent name="C:\xampp\htdocs\athitude\source\App" />
-      <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\widgets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\athitude\source\App\Admin" />
@@ -105,6 +107,18 @@
       <workItem from="1633989527388" duration="1790000" />
       <workItem from="1633991342072" duration="1785000" />
       <workItem from="1633993150851" duration="200000" />
+      <workItem from="1633999109665" duration="1784000" />
+      <workItem from="1634000914864" duration="1793000" />
+      <workItem from="1634002733740" duration="1793000" />
+      <workItem from="1634004642618" duration="1420000" />
+      <workItem from="1634064856622" duration="2002000" />
+      <workItem from="1634066916178" duration="1867000" />
+      <workItem from="1634068810076" duration="2069000" />
+      <workItem from="1634241935417" duration="447000" />
+      <workItem from="1634242395169" duration="1044000" />
+      <workItem from="1634245999163" duration="1778000" />
+      <workItem from="1634247801129" duration="1783000" />
+      <workItem from="1634249608488" duration="506000" />
     </task>
     <servers />
   </component>
@@ -124,9 +138,36 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="384" key="NewPhpFileDialog" timestamp="1633992657835">
+    <state x="585" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1634248039751">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state x="690" y="384" key="NewPhpFileDialog/0.0.1707.920@0.0.1707.920" timestamp="1633992657835" />
+    <state x="585" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1707.920@0.0.1707.920" timestamp="1634248039751" />
+    <state x="623" y="183" key="NewPhpClassDialog" timestamp="1634242110730">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="623" y="183" key="NewPhpClassDialog/0.0.1707.920@0.0.1707.920" timestamp="1634242110730" />
+    <state x="690" y="384" key="NewPhpFileDialog" timestamp="1634002959540">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="690" y="384" key="NewPhpFileDialog/0.0.1707.920@0.0.1707.920" timestamp="1634002959540" />
+    <state x="516" y="196" width="672" height="678" key="search.everywhere.popup" timestamp="1634068600703">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="516" y="196" width="672" height="678" key="search.everywhere.popup/0.0.1707.920@0.0.1707.920" timestamp="1634068600703" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/source/App/Admin/InventoryController.php</url>
+          <line>16</line>
+          <properties>
+            <option name="className" value="\Source\App\Admin\InventoryController" />
+            <option name="methodName" value="create" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

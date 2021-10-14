@@ -175,7 +175,16 @@ $route->post("/category/categories", "CategoryController:categories");
 $route->post("/category/categories/{id}", "CategoryController:categories");
 $route->post("/category/products", "CategoryController:products");
 
- 
+//ESTOQUE
+$route->post("/inventory/create", "InventoryController:create");
+$route->post("/inventory/delete", "InventoryController:delete");
+$route->post("/inventory/edit", "InventoryController:edit");
+$route->post("/inventory/update", "InventoryController:update");
+
+//GALERIA DE IMAGENS
+$route->post("/product/gallery/{product_id}", "GalleryController:gallery");
+$route->post("/product/delete/{id}", "GalleryController:delete");
+
 //FABRICANTES
 $route->get("/brand/home", "BrandController:home");
 $route->get("/brand/home/{page}", "BrandController:home");

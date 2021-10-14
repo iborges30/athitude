@@ -31,8 +31,8 @@
                         <div class="card shadow mb-4">
                             <div class="card-profile-image mt-4 col-md-12 text-center">
                                 <figure class="figure">
-                                    <img src="<?= theme("/assets/images/produto.jpg", CONF_VIEW_THEME); ?>"
-                                         alt="Burguer Delivery" class="js-profile  image">
+                                    <img src="<?= theme("/assets/images/logo.jpg", CONF_VIEW_THEME); ?>"
+                                         alt="Atitude" class="js-profile  image">
                                 </figure>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                     <div class="col-lg-8 order-lg-1">
                         <div class="card shadow mb-4">
                             <div class="card-body">
-                                <form action="<?= url("/admin/product/product");?>" method="post" name="formProduct">
+                                <form action="<?= url("/admin/product/product"); ?>" method="post" name="formProduct">
                                     <input type="hidden" name="action" value="create">
                                     <div class="pl-lg-1">
                                         <div class="row">
@@ -69,17 +69,17 @@
                                                 <div class="form-group focused">
                                                     <label class="form-control-label" for="name">Categoria
                                                         <span class="small text-danger">*</span></label>
-                                                    <select name="category_id" id="" class="form-control">
+                                                    <select name="category_id" id="" class="form-control jsc-category">
                                                         <?php
                                                         if ($categories):
                                                             foreach ($categories as $p):
                                                                 ?>
-                                                                <option value="<?=$p->id;?>"><?=$p->category;?></option>
+                                                                <option value="<?= $p->id; ?>"><?= $p->category; ?></option>
                                                             <?php
                                                             endforeach;
                                                         endif;
                                                         ?>
-                                                        <option value="new">Nova Categoria</option>
+                                                        <option value="category">Nova Categoria</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -88,12 +88,12 @@
                                                 <div class="form-group focused">
                                                     <label class="form-control-label" for="name">Fabricante
                                                         <span class="small text-danger">*</span></label>
-                                                    <select name="brand_id" id="" class="form-control">
+                                                    <select name="brand_id" id="" class="form-control jsc-brand">
                                                         <?php
                                                         if ($brands):
                                                             foreach ($brands as $p):
                                                                 ?>
-                                                                <option value="<?=$p->id;?>"><?=$p->name;?></option>
+                                                                <option value="<?= $p->id; ?>"><?= $p->name; ?></option>
                                                             <?php
                                                             endforeach;
                                                         endif;
@@ -119,9 +119,9 @@
                                                         <span class="small text-danger">*</span></label>
                                                     <select name="status" id="" class="form-control">
                                                         <?php
-                                                        foreach (status() as $key=>$p):
+                                                        foreach (status() as $key => $p):
                                                             ?>
-                                                            <option value="<?= $key;?>"><?= $p;?></option>
+                                                            <option value="<?= $key; ?>"><?= $p; ?></option>
                                                         <?php
                                                         endforeach;
                                                         ?>

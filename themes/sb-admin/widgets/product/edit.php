@@ -3,6 +3,7 @@
     <?php $v->insert("widgets/product/modal_brand"); ?>
     <?php $v->insert("widgets/product/modal_category"); ?>
     <?php $v->insert("widgets/product/modal_inventory"); ?>
+    <div class="ajax-modal-edit-inventory"></div>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
@@ -34,7 +35,7 @@
     <div class="card-body bg-white radius shadow">
         <div class="tab-content " id="myTabContent">
             <!-- CADASTRO GERAL -->
-            <div class="tab-pane fade show  row" id="home" role="tabpanel"
+            <div class="tab-pane fade show active  row" id="home" role="tabpanel"
                  aria-labelledby="home-tab">
                 <div class="row">
                     <div class="col-lg-4 order-lg-2">
@@ -47,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-8 order-lg-1">
+                    <div class="col-lg-8 order-lg-1 ">
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <form action="<?= url("/admin/product/update/{$product->id}"); ?>" method="post"
@@ -217,6 +218,7 @@
 
                                             <div class="col text-right" style="margin-top: 30px">
                                                 <div class="form-group ">
+
                                                     <button type="submit" class="btn btn-success">Atualizar</button>
                                                     <a href="#" class="btn btn-primary ml-4">Voltar</a>
                                                 </div>
@@ -229,14 +231,15 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
-            <!-- CAPA -->
-            <div class="row tab-pane fade show active " id="capa" role="tabpanel" aria-labelledby="capa-tab">
+            <!-- ESTOQUE -->
+            <div class="row tab-pane fade show  " id="capa" role="tabpanel" aria-labelledby="capa-tab">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
-                        <table class="table">
+                        <table class="table jsc-table">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -247,33 +250,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>P</td>
-                                <td>Amarelo</td>
-                                <td>1</td>
-                                <td>Deleta/Edita</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>P</td>
-                                <td>Amarelo</td>
-                                <td>1</td>
-                                <td>Deleta/Edita</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>P</td>
-                                <td>Amarelo</td>
-                                <td>1</td>
-                                <td>Deleta/Edita</td>
-                            </tr>
+                            <?php
+                            if (!empty($inventory)):
+                                foreach ($inventory as $i) :
+                                    ?>
+                                    <?php $v->insert("widgets/product/line", ["i" => $i]); ?>
+                                <?php
+                                endforeach;
+                            endif;
+                            ?>
                             </tbody>
                         </table>
                         <div class="col text-right" style="margin-top: 30px">
                             <div class="form-group ">
                                 <a href="#"
-                                   data-product-id="<?=$product->id;?>"
                                    class="btn btn-success ml-4 jsc-inventory-open-modal">Cadastrar</a>
                             </div>
                         </div>
@@ -282,54 +272,39 @@
             </div>
 
             <!-- PHOTOS -->
-            <!-- CAPA -->
             <div class="row tab-pane fade show  " id="photos" role="tabpanel" aria-labelledby="photos-tab">
                 <div class="row">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="card shadow mb-4">
-                            <div class="card-profile-image mt-4 col-md-12 text-center">
-                                <figure class="figure">
-                                    <img src="https://fomix.net.br/plus/storage/images/cache/cover-burguer-delivery-375-0a5e0799.png"
-                                         alt="Burguer Delivery" class="js-capa imagecover"></figure>
-                            </div>
+                    <div class="col-md-12">
+                        <div class="row ajax-gallery">
+                            <?php
+                            if (!empty($gallery)):
+                                foreach ($gallery as $p):
+                                    ?>
+                                    <div class="mt-5 mb-5 m-lg-5" id="g-<?= $p->id; ?>">
+                                        <a href="<?= url("/admin/product/delete/{$p->id}"); ?>"
+                                           data-id="<?= $p->id; ?>"
+                                           data-image="<?= $p->uri; ?>"
+                                           class="jsc-delete-image-gallery">
+                                            <figure class="figure">
+                                                <?= photo_img($p->uri, $p->uri, 128, 128,
+                                                    "rounded-circle mx-auto"); ?>
+                                            </figure>
+                                        </a>
+                                    </div>
+                                <?php
+                                endforeach;
+                            endif;
+                            ?>
                         </div>
                     </div>
-
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">
-                                    Burguer Delivery </h6>
-                            </div>
+                    <div class="col-md-12">
+                        <div class="mb-4">
                             <div class="card-body">
-
-                                <form action="https://fomix.net.br/plus/admin/enterprise/myenterprise/update-cover"
-                                      method="post">
-                                    <input type="hidden" name="action" value="update">
-                                    <div class="pl-lg-1">
-                                        <div class="row">
-
-
-                                            <div class="col-lg-12" style="margin-top: 30px">
-                                                <div class="form-group focused">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input wc_loadimage"
-                                                               name="imagecover" id="inputGroupFile02">
-                                                        <label class="custom-file-label"
-                                                               for="inputGroupFile02">Imagem</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col text-right" style="margin-top: 30px">
-                                                <div class="form-group ">
-                                                    <button type="submit" class="btn btn-success">Atualizar</button>
-                                                    <a href="https://fomix.net.br/plus/admin/enterprise/home"
-                                                       class="btn btn-primary ml-4">Voltar</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <form action="<?= url("/admin/product/gallery/{$product->id}"); ?>" method="post"
+                                      name="formGallery" enctype="multipart/form-data">
+                                    <input type="file" name="gallery[]" multiple>
+                                    <input type="hidden" name="product" value="<?= $product->name; ?>">
+                                    <input type="hidden" name="createGallery" value="<?= $product->name; ?>">
                                 </form>
                             </div>
                         </div>
