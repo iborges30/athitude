@@ -144,6 +144,24 @@ abstract class Model
     }
 
     /**
+     * @param string|null $query
+     * @param null|string $params
+     * @return Model|mixed
+     */
+    public function findCustom(?string $query, ?string $params = null)
+    {
+        if ($params) {
+            $this->query = $query;
+            parse_str($params, $this->params);
+            return $this;
+        }
+
+        $this->query = $query;
+        return $this;
+    }
+
+
+    /**
      * @param string $columnOrder
      * @return Model
      */

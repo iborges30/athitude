@@ -27,6 +27,26 @@ class ProductController extends Admin
     public function home(?array $data): void
     {
 
+        $products = (new Products())->findCustom("SELECT
+	products.name, 
+	products.image, 
+	products.price, 
+	products_categories.category, 
+	products.category_id,
+	products.status,
+	products.id,
+	products.code
+FROM
+	products
+	INNER JOIN
+	products_categories
+	ON 
+		products.category_id = products_categories.id");
+
+
+        $pager = new Pager(url("/admin/product/home/"));
+        $pager->pager($products->count(), 20, (!empty($data["page"]) ? $data["page"] : 1));
+
 
         $head = $this->seo->render(
             CONF_SITE_NAME . " | Produtos",
@@ -39,7 +59,8 @@ class ProductController extends Admin
         echo $this->view->render("widgets/product/home", [
             "app" => "product/home",
             "head" => $head,
-
+            "products" => $products->order("status ASC, category_id ASC, name ASC")->limit($pager->limit())->offset($pager->offset())->fetch(true),
+            "paginator" => $pager->render()
         ]);
 
     }
@@ -221,6 +242,47 @@ class ProductController extends Admin
             echo json_encode($json);
             return;
 
+        }
+    }
+
+    public function delete(?array $data): void
+    {
+
+        $productId = filter_var($data["id"], FILTER_VALIDATE_INT);
+        $delete = (new Products())->findById($productId);
+        $deleteGallery = (new Gallery())->find("product_id = :di", "di={$productId}")->fetch(true);
+        $inventory = (new Inventory())->find("product_id = :di", "di={$productId}")->fetch(true);
+
+        if ($delete) {
+
+            if ($delete->image && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$delete->image}")) {
+                unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$delete->image}");
+                (new Thumb())->flush($delete->image);
+            }
+
+            //DELETE DA GALERIA
+            if ($deleteGallery) {
+                foreach ($deleteGallery as $g) {
+                    if ($g->uri && file_exists(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$g->uri}")) {
+                        unlink(__DIR__ . "/../../../" . CONF_UPLOAD_DIR . "/{$g->uri}");
+                        (new Thumb())->flush($g->uri);
+                    }
+                    $g->destroy();
+                }
+            }
+
+            //DELETA INVENTATIO
+
+            if($inventory){
+                foreach ($inventory as $p){
+                    $p->destroy();
+                }
+            }
+
+            //DELETA PRODUTO
+            $delete->destroy();
+            $this->message->success("Produto removido com sucesso.")->flash();
+            echo json_encode(["redirect" => url("/admin/product/home")]);
         }
     }
 }

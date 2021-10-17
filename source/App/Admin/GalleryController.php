@@ -34,7 +34,7 @@ class GalleryController extends Admin
             foreach ($imageFiles as $file) {
                 $upload = new Upload();
                 $create = new Gallery();
-                $image = $upload->image($file, $data['product']);
+                $image = $upload->image($file, $data['product'].time());
 
                 if (!$image) {
                     $json["message"] = $upload->message()->render();

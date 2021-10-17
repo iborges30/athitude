@@ -157,12 +157,14 @@ $route->post("/notifications/list", "Notifications:list");
 //PRODUTOS
 //PRODUTOS
 $route->get("/product/home", "ProductController:home");
+$route->get("/product/home/{page}", "ProductController:home");
 $route->get("/product/product", "ProductController:show");
 $route->get("/product/edit/{id}", "ProductController:edit");
 
 
 $route->post("/product/product", "ProductController:create");
 $route->post("/product/update/{id}", "ProductController:update");
+$route->post("/product/delete/{id}", "ProductController:delete");
 
 
 //CATEGORIAS
@@ -183,7 +185,7 @@ $route->post("/inventory/update", "InventoryController:update");
 
 //GALERIA DE IMAGENS
 $route->post("/product/gallery/{product_id}", "GalleryController:gallery");
-$route->post("/product/delete/{id}", "GalleryController:delete");
+$route->post("/product/gallery/delete/{id}", "GalleryController:delete");
 
 //FABRICANTES
 $route->get("/brand/home", "BrandController:home");

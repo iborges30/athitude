@@ -464,7 +464,7 @@ $(function () {
 
                     $(".ajax-gallery").append('  ' +
                         ' <div class="mt-5 mb-5 m-lg-5" id="g-' + values.id + '">' +
-                        '  <a href="../delete/' + values.id + '" data-id=" ' + values.id + ' " data-image="' + values.uri + '" class="jsc-delete-image-gallery">' +
+                        '  <a href="../gallery/delete/' + values.id + '" data-id=" ' + values.id + ' " data-image="' + values.uri + '" class="jsc-delete-image-gallery">' +
                         '  <figure class="figure">' +
                         '<img width="120" height="120" src="' + BASE + '/storage/' + values.uri + '">' +
                         '    </figure>' +

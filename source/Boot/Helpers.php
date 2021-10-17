@@ -581,3 +581,22 @@ function status($data = null)
         return $status;
     }
 }
+
+
+/**
+ * ###################################
+ * ###   RETORNA CATEGORY PAYMENT  ###
+ * ###################################
+ */
+function bgStatusOptionsItems($data = null)
+{
+    $status = [
+        "active" => "badge-pill badge-success",
+        "inactive" => "badge-pill badge-warning"
+    ];
+    if (!empty($data)) {
+        return $status[$data];
+    } else {
+        return $status;
+    }
+}

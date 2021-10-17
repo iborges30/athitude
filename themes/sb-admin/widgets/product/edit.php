@@ -281,7 +281,7 @@
                                 foreach ($gallery as $p):
                                     ?>
                                     <div class="mt-5 mb-5 m-lg-5" id="g-<?= $p->id; ?>">
-                                        <a href="<?= url("/admin/product/delete/{$p->id}"); ?>"
+                                        <a href="<?= url("/admin/product/gallery/delete/{$p->id}"); ?>"
                                            data-id="<?= $p->id; ?>"
                                            data-image="<?= $p->uri; ?>"
                                            class="jsc-delete-image-gallery">
