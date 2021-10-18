@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100&display=swap"
           rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.png"); ?>"/>
+    <link rel="icon" type="image/png" href="<?= theme("/assets/images/favicon.jpg"); ?>"/>
     <link rel="stylesheet" href="<?= theme("/assets/style.css"); ?>"/>
 
 
@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-1">
             <div class="logo center">
-                <a href="#">
+                <a href="<?= url();?>">
                     <img src="<?= theme("/assets/images/logo.jpg", CONF_VIEW_THEME);?>" alt="Logo">
                 </a>
             </div>
@@ -52,6 +52,7 @@
 </div>
 
 <?= $v->section("content"); ?>
+
 <!-- FOOTER -->
 <footer class="all bg-footer mt-60">
     <div class="container">
@@ -59,9 +60,10 @@
             <div class="col-1">
                 <div class="footer">
                     <p class="poppins text-default">
-                        Athitude Fitness - CNPJ:
-                        nº 00.000.000/0001-02,
-                        - Campo Novo do Parecis MT</p>
+
+                        <?= $enterprise->enterprise;?> - CNPJ:
+                        nº <?= formatDocument($enterprise->document);?>
+                        - <?= $enterprise->city;?> - <?= $enterprise->state;?></p>
                 </div>
             </div>
         </div>

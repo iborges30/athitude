@@ -302,7 +302,7 @@
 .text-production {
     font-weight: 700;
     text-align: center;
-    height: 50px;
+    max-height: 50px;
     overflow: hidden;
 }
 .text-production p {
@@ -678,4 +678,24 @@
     margin-right: auto;
     margin-left: auto;
     cursor: pointer;
+}
+
+.paginator {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+}
+nav.paginator .paginator_item {
+    padding: 10px 15px;
+    border: 1px solid #111;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    text-decoration: none;
+    color: #111;
+}
+.paginator_item.paginator_active {
+    background: #000;
+    color: #FFFFFF!important;
 }

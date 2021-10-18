@@ -19,7 +19,12 @@ $route->namespace("Source\App");
  */
 $route->group(null);
 $route->get("/", "Web:home");
-$route->get("/sobre", "Web:about");
+$route->get("/{page}", "Web:home");
+
+
+$route->post("/single/modal", "Web:single");
+
+
 
 //blog
 $route->group("/blog");
@@ -197,6 +202,15 @@ $route->post("/brand/brands", "BrandController:brands");
 $route->post("/brand/products/createModal", "BrandController:brandCreateModal");
 $route->post("/brand/brands/{id}", "BrandController:brands");
 
+
+//CONFIGURAÇÕES
+$route->get("/settings/settings", "SettingsController:settings");
+$route->get("/settings/settings/{id}", "SettingsController:settings");
+
+$route->post("/settings/settings", "SettingsController:settings");
+$route->post("/settings/settings/{id}", "SettingsController:settings");
+$route->post("/about/settings/{id}", "SettingsController:about");
+$route->post("/rate/settings/{id}", "SettingsController:rate");
 
 
 

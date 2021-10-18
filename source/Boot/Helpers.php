@@ -600,3 +600,99 @@ function bgStatusOptionsItems($data = null)
         return $status;
     }
 }
+
+/**
+ * <b>Checa CNPJ:</b> Informe um CNPJ para checar sua validade via algoritmo!
+ * @param STRING $CNPJ = CNPJ com ou sem pontuação
+ * @return BOLEAM = True se for um CNJP válido
+ */
+function validateCnpj($Cnpj)
+{
+    $Cnpj = (string)$Cnpj;
+    $Cnpj = preg_replace('/[^0-9]/', '', $Cnpj);
+
+    if (strlen($Cnpj) != 14):
+        return false;
+    endif;
+
+    $A = 0;
+    $B = 0;
+
+    for ($i = 0, $c = 5; $i <= 11; $i++, $c--):
+        $c = ($c == 1 ? 9 : $c);
+        $A += $Cnpj[$i] * $c;
+    endfor;
+
+    for ($i = 0, $c = 6; $i <= 12; $i++, $c--):
+        if (str_repeat($i, 14) == $Cnpj):
+            return false;
+        endif;
+        $c = ($c == 1 ? 9 : $c);
+        $B += $Cnpj[$i] * $c;
+    endfor;
+
+    $somaA = (($A % 11) < 2) ? 0 : 11 - ($A % 11);
+    $somaB = (($B % 11) < 2) ? 0 : 11 - ($B % 11);
+
+    if (strlen($Cnpj) != 14):
+        return false;
+    elseif ($somaA != $Cnpj[12] || $somaB != $Cnpj[13]):
+        return false;
+    else:
+        return true;
+    endif;
+}
+
+function calculeInstallment($installment, $price)
+{
+    $installment = (empty($installment) ? 1 : $installment);
+    $calcule = $price / $installment;
+    return str_price(round($calcule, 2));
+}
+
+
+/*
+ * FORMAT CNPJ
+ */
+function formatDocument($cpf_cnpj)
+{
+    /*
+        Pega qualquer CPF e CNPJ e formata
+
+        CPF: 000.000.000-00
+        CNPJ: 00.000.000/0000-00
+    */
+
+    ## Retirando tudo que não for número.
+    $cpf_cnpj = preg_replace("/[^0-9]/", "", $cpf_cnpj);
+    $tipo_dado = NULL;
+    if (strlen($cpf_cnpj) == 11) {
+        $tipo_dado = "cpf";
+    }
+    if (strlen($cpf_cnpj) == 14) {
+        $tipo_dado = "cnpj";
+    }
+    switch ($tipo_dado) {
+        default:
+            $cpf_cnpj_formatado = "Não foi possível definir tipo de dado";
+            break;
+
+        case "cpf":
+            $bloco_1 = substr($cpf_cnpj, 0, 3);
+            $bloco_2 = substr($cpf_cnpj, 3, 3);
+            $bloco_3 = substr($cpf_cnpj, 6, 3);
+            $dig_verificador = substr($cpf_cnpj, -2);
+            $cpf_cnpj_formatado = $bloco_1 . "." . $bloco_2 . "." . $bloco_3 . "-" . $dig_verificador;
+            break;
+
+        case "cnpj":
+            $bloco_1 = substr($cpf_cnpj, 0, 2);
+            $bloco_2 = substr($cpf_cnpj, 2, 3);
+            $bloco_3 = substr($cpf_cnpj, 5, 3);
+            $bloco_4 = substr($cpf_cnpj, 8, 4);
+            $digito_verificador = substr($cpf_cnpj, -2);
+            $cpf_cnpj_formatado = $bloco_1 . "." . $bloco_2 . "." . $bloco_3 . "/" . $bloco_4 . "-" . $digito_verificador;
+            break;
+    }
+    return $cpf_cnpj_formatado;
+}

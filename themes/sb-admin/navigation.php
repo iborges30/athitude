@@ -62,10 +62,15 @@ echo $nav("Produtos", "fas fa-tshirt", [
 // Usuários
 echo $nav("Categorias", "far fa-folder", [
     "Categorias" => "category/home",
-    "Nova Categoria" => "category/category"
+    "Nova Categoria" => "category/categories"
 ]);
 
 echo $nav("Fabricantes", "fas fa-copyright", [
     "Fabricantes" => "brand/home",
     "Novo fabricante" => "brand/brands"
+]);
+
+//CONFIGURAÇÕES
+echo $nav("Configurações", "fas fa-sliders-h", [
+    "Configurações" => "settings/settings/1"
 ]);

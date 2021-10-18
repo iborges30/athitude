@@ -5,8 +5,10 @@ namespace Source\App;
 use Source\Core\Controller;
 use Source\Models\Auth;
 use Source\Models\Category;
+use Source\Models\Enterprises\Enterprises;
 use Source\Models\Faq\Question;
 use Source\Models\Post;
+use Source\Models\Products\Products;
 use Source\Models\Report\Access;
 use Source\Models\Report\Online;
 use Source\Models\User;
@@ -32,8 +34,29 @@ class Web extends Controller
     /**
      * SITE HOME
      */
-    public function home(): void
+    public function home(?array $data): void
     {
+
+        $products = (new Products())->findCustom("
+        SELECT
+	products.name, 
+	products.image, 
+	products.price, 
+	products.url, 
+	inventory.product_id, 
+	inventory.amount, 
+	products.id
+FROM
+	products,
+	inventory
+WHERE
+	inventory.amount >= 1 AND products.id = inventory.product_id
+	AND products.status = 'active'  AND products.price > 0" );
+
+
+        $pager = new Pager(url("/"));
+        $pager->pager($products->count(), 20, (!empty($data["page"]) ? $data["page"] : 1));
+
         $head = $this->seo->render(
             CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
             CONF_SITE_DESC,
@@ -43,13 +66,28 @@ class Web extends Controller
 
         echo $this->view->render("home", [
             "head" => $head,
-            "video" => "lDZGl9Wdc7Y",
-            "blog" => (new Post())
-                ->findPost()
-                ->order("post_at DESC")
-                ->limit(6)
-                ->fetch(true)
+            "enterprise" => $this->enterprise(),
+            "paginator" => $pager->render(),
+            "products" => $products->order("products.id")->limit($pager->limit())->offset($pager->offset())->fetch(true),
         ]);
+    }
+
+
+
+    //RETORNA OS DADOS DA EMPRESA
+    public function enterprise()
+    {
+        $enterpise = (new Enterprises())->findById(1);
+        return $enterpise;
+    }
+
+
+    /**
+     ************************************
+     ************SINGLE PAGE MODAL
+     ***********************************/
+    public function single(?array $data): void{
+        var_dump($data);
     }
 
     /**
