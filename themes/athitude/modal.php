@@ -2,46 +2,46 @@
     <div class="modal">
         <div class="page-item">
             <div class="go-back">
-                <a href="#" class="jsc-back poppins" data-product-id="161">
+                <a href="#" class="jsc-back poppins">
                     X
                 </a>
             </div>
 
             <div class="page-item-title">
-                <h1 class="poppins text-dark">Coleção blusas de algodão</h1>
+                <h1 class="poppins text-dark"><?= $product->name; ?></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-1">
                 <div class="page-item-image">
-                    <img name="Blusa de malha" alt="Blusa de malha"
-                         src="<?= theme("/assets/images/produto.jpg", CONF_VIEW_THEME); ?>">
+                    <img title="<?= $product->name; ?>" alt="<?= $product->name; ?>"
+                         src="<?= image($product->image, 1080, 1080); ?>"/>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-70">
                 <div class="product-descripition-items">
-                    <p class="roboto text-dark">Código: #RF456 </p>
+                    <p class="roboto text-dark">Código: <?= $product->code; ?> </p>
                 </div>
                 <div class="product-descripition-items">
-                    <p class="roboto text-dark">Categoria: Blusas </p>
+                    <p class="roboto text-dark">Categoria: <?= $category->category; ?> </p>
                 </div>
 
                 <div class="product-descripition-items">
-                    <p class="roboto text-dark">Fabricante: Atitude Fitness</p>
+                    <p class="roboto text-dark">Fabricante: <?= $brand->name; ?></p>
                 </div>
             </div>
 
             <div class="col-30">
                 <div class="product-price">
-
                     <p class="poppins text-dark">
-                        R$ 49,90
+                        R$ <?= str_price($product->price); ?>
                     </p>
 
                     <small class="text-default poppins">
-                        ou em 3x de 20,00
+                        ou em <?= $_SESSION["enterprise"]->installment; ?>x
+                        de <?= calculeInstallment($_SESSION["enterprise"]->installment, $product->price); ?>
                     </small>
                 </div>
 
@@ -49,9 +49,7 @@
         </div>
         <div class="row">
             <div class="descritpion-product roboto text-dark">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum odio id eros congue
-                vulputate. Proin sem ligula, commodo eu malesuada eu, porttitor in nulla. Quisque accumsan imperdiet
-                felis, vel venenatis erat laoreet porta. Class aptent taciti sociosqu ad litora
+                <?= $product->description; ?>
             </div>
         </div>
         <div class="row">
@@ -61,9 +59,16 @@
                         Tamanho
                     </h2>
                     <ul class="ds-flex roboto">
-                        <li>G</li>
-                        <li>P</li>
-                        <li>GG</li>
+                        <?php foreach ($inventory as $p): ?>
+                            <li data-size-id="<?= $p->id; ?>" class="jsc-size-selected">
+                                <div class="check-active active-size" id="size-<?= $p->id; ?>">
+                                    <i  class="far fa-check-circle"></i>
+                                </div>
+                                <div class="size">
+                                    <?= $p->size; ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -74,17 +79,14 @@
                     </h2>
 
                     <ul class="ds-flex details-colors">
-                        <?php
-                        for ($i = 0; $i < 2; $i++):
-                            ?>
-                            <li style="background: #FE6E53"></li>
-                            <li style="background: #0c0c0c"></li>
-                            <li style="background: #02C588"></li>
-                        <?php
-                        endfor;
-                        ?>
+                        <?php foreach ($inventory as $p): ?>
+                            <li data-color-id="<?= $p->id; ?>" style="background:<?= $p->color; ?>" class="jsc-color-selected">
+                                <div class="check-active active-color" id="color-<?= $p->id; ?>">
+                                    <i class="far fa-check-circle"></i>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
-
                 </div>
             </div>
         </div>
@@ -93,14 +95,17 @@
             <div class="row">
                 <div class="col-2">
                     <form action="">
-                        <span class="item-buy-plus">+</span>
+
+                        <span class="item-buy-plus" id="">+</span>
                         <input type="tel" name="amount" value="1" readonly="">
                         <span class="item-buy-minus">-</span>
                     </form>
                 </div>
 
                 <div class="col-2">
-                    <a href="#" class="bt-add-buy poppins jsc-add-bag">
+                    <a href="#" class="bt-add-buy poppins jsc-add-bag"
+                       data-price="<?= $product->price; ?>"
+                       data-product-id="<?= $product->id; ?>">
                         <i class="fas fa-shopping-bag"></i>Adicionar
                     </a>
                 </div>

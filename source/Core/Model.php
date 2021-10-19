@@ -374,6 +374,7 @@ abstract class Model
         return $filter;
     }
 
+
     /**
      * @return bool
      */

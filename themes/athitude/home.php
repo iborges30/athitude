@@ -1,11 +1,11 @@
 <?php $v->layout("_theme"); ?>
-<div class="dialog all ajax-product-modal">faz o load aqui</div>
-
 <div class="dialog-home-products ds-none">
     <div class="box-load">
-        <img src="<?=theme("/assets/images/load.gif");?>" alt="load">
+        <img src="<?=theme("/assets/images/loadball.gif");?>" alt="load">
     </div>
 </div>
+
+<div class="dialog all ajax-product-modal"></div>
 
 
 <div class="container">

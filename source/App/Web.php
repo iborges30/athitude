@@ -4,11 +4,14 @@ namespace Source\App;
 
 use Source\Core\Controller;
 use Source\Models\Auth;
+use Source\Models\Brands\Brands;
 use Source\Models\Category;
 use Source\Models\Enterprises\Enterprises;
 use Source\Models\Faq\Question;
+use Source\Models\Inventory\Inventory;
 use Source\Models\Post;
 use Source\Models\Products\Products;
+use Source\Models\ProductsCategories\ProductsCategories;
 use Source\Models\Report\Access;
 use Source\Models\Report\Online;
 use Source\Models\User;
@@ -51,7 +54,7 @@ FROM
 	inventory
 WHERE
 	inventory.amount >= 1 AND products.id = inventory.product_id
-	AND products.status = 'active'  AND products.price > 0" );
+	AND products.status = 'active'  AND products.price > 0");
 
 
         $pager = new Pager(url("/"));
@@ -73,12 +76,11 @@ WHERE
     }
 
 
-
     //RETORNA OS DADOS DA EMPRESA
     public function enterprise()
     {
         $enterpise = (new Enterprises())->findById(1);
-        return $enterpise;
+        return $_SESSION["enterprise"] = $enterpise;
     }
 
 
@@ -86,7 +88,60 @@ WHERE
      ************************************
      ************SINGLE PAGE MODAL
      ***********************************/
-    public function single(?array $data): void{
+    public function single(?array $data): void
+    {
+
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+        $productId = filter_var($data['productId'], FILTER_SANITIZE_STRIPPED);
+        $product = (new Products)->findById($productId);
+        $inventory = (new Inventory())->find("product_id = :i", "i={$productId}")->fetch(true);
+
+        $category = (new ProductsCategories())->find("id = :p", "p={$product->category_id}", "category")->fetch();
+        $brand = (new Brands())->find("id = :p", "p={$product->brand_id}", "name")->fetch();
+
+
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("modal", [
+            "head" => $head,
+            "product" => $product,
+            "category" => $category,
+            "brand" => $brand,
+            "inventory" => $inventory
+
+        ]);
+    }
+
+
+    //AUMENTA A QUANTIDADE DE PRODUTO NA PÁGINA PRODUTO
+    public function plus(?array $data): void
+    {
+        $productId = filter_var($data["productId"], FILTER_VALIDATE_INT);
+        $inventoryId = filter_var($data["attributesId"], FILTER_VALIDATE_INT);
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+
+        $json = null;
+        $stockProduct = (new Inventory())->find(" id = :di AND product_id = :p", "di={$inventoryId}&p={$productId}", "amount")->fetch();
+
+        if ($stockProduct) {
+            if ($data["amount"] > $stockProduct->amount) {
+                $json["nostock"] = true;
+            }
+            $json["amount"] = $data["amount"];
+
+        }
+        echo json_encode($json);
+    }
+
+
+    //INSERE O PRODUTO NA SESSION
+    public function bag(?array $data): void
+    {
         var_dump($data);
     }
 
