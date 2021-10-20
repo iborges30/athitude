@@ -24,6 +24,7 @@ $route->get("/{page}", "Web:home");
 
 $route->post("/single/modal", "Web:single");
 $route->post("/single/plus", "Web:plus");
+$route->post("/modal/selected/colors", "Web:colors");
 $route->post("/insert/product/session", "Web:bag");
 
 

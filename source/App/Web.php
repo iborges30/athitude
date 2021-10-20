@@ -54,7 +54,7 @@ FROM
 	inventory
 WHERE
 	inventory.amount >= 1 AND products.id = inventory.product_id
-	AND products.status = 'active'  AND products.price > 0");
+	AND products.status = 'active'  AND products.price > 0  ");
 
 
         $pager = new Pager(url("/"));
@@ -94,7 +94,7 @@ WHERE
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
         $productId = filter_var($data['productId'], FILTER_SANITIZE_STRIPPED);
         $product = (new Products)->findById($productId);
-        $inventory = (new Inventory())->find("product_id = :i", "i={$productId}")->fetch(true);
+        $inventory = (new Inventory())->find("product_id = :i GROUP BY product_id ", "i={$productId}")->fetch(true);
 
         $category = (new ProductsCategories())->find("id = :p", "p={$product->category_id}", "category")->fetch();
         $brand = (new Brands())->find("id = :p", "p={$product->brand_id}", "name")->fetch();
@@ -118,21 +118,42 @@ WHERE
     }
 
 
+    /**
+     ***************************************************
+     ************ BUSCA AS CORES EM RELAÇÂO AO TAMANHO
+     ***************************************************/
+
+    /**
+     * @return Message
+     */
+    public function colors(?array $data): void
+    {
+        $productId = filter_var($data["productId"], FILTER_VALIDATE_INT);
+        $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+        $inventory = (new Inventory())->find("product_id = :di AND size = :s", "di={$productId}&s={$data["selectedSize"]}");
+
+        echo $this->view->render("colors", [
+            "colors" => $inventory->fetch("true")
+        ]);
+    }
+
+
     //AUMENTA A QUANTIDADE DE PRODUTO NA PÁGINA PRODUTO
     public function plus(?array $data): void
     {
         $productId = filter_var($data["productId"], FILTER_VALIDATE_INT);
-        $inventoryId = filter_var($data["attributesId"], FILTER_VALIDATE_INT);
         $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
 
         $json = null;
-        $stockProduct = (new Inventory())->find(" id = :di AND product_id = :p", "di={$inventoryId}&p={$productId}", "amount")->fetch();
+        $stockProduct = (new Inventory())->find("product_id = :di  AND color = :c AND size = :s",
+            "di={$productId}&c={$data["color"]}&s={$data["size"]}", "amount")->fetch();
+
 
         if ($stockProduct) {
             if ($data["amount"] > $stockProduct->amount) {
                 $json["nostock"] = true;
             }
-            $json["amount"] = $data["amount"];
+            $json["amount"] = $data["amount"]  ;
 
         }
         echo json_encode($json);
@@ -142,7 +163,17 @@ WHERE
     //INSERE O PRODUTO NA SESSION
     public function bag(?array $data): void
     {
-        var_dump($data);
+        $session = $this->session($data);
+        var_dump($session);
+        //CONTINUAR AQUI
+
+    }
+
+    //GERA A SESSION
+    public function session(?array $data): ?array
+    {
+        //VERIFICAR O ESTOQUE ANTES DE FINALIZAR
+        return $_SESSION['cart'][$data['productId']] = $data;
     }
 
     /**

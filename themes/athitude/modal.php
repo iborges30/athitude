@@ -60,9 +60,11 @@
                     </h2>
                     <ul class="ds-flex roboto">
                         <?php foreach ($inventory as $p): ?>
-                            <li data-size-id="<?= $p->id; ?>" class="jsc-size-selected">
+                            <li data-size-id="<?= $p->id; ?>"
+                                data-size="<?= $p->size; ?>"
+                                class="jsc-size-selected jsc-set-color">
                                 <div class="check-active active-size" id="size-<?= $p->id; ?>">
-                                    <i  class="far fa-check-circle"></i>
+                                    <i class="far fa-check-circle"></i>
                                 </div>
                                 <div class="size">
                                     <?= $p->size; ?>
@@ -77,16 +79,9 @@
                     <h2 class="poppins text-dark">
                         Cores
                     </h2>
-
-                    <ul class="ds-flex details-colors">
-                        <?php foreach ($inventory as $p): ?>
-                            <li data-color-id="<?= $p->id; ?>" style="background:<?= $p->color; ?>" class="jsc-color-selected">
-                                <div class="check-active active-color" id="color-<?= $p->id; ?>">
-                                    <i class="far fa-check-circle"></i>
-                                </div>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                    <!--RECE AS CORES VIA AJAX -->
+                    <ul class="ds-flex details-colors ajax-colors"></ul>
+                    <!--RECE AS CORES VIA AJAX -->
                 </div>
             </div>
         </div>
@@ -110,6 +105,25 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="dialog-bag all" >
+    <div class="modal-bag">
+        <div class="modal-title-bag">
+            <h2 class="poppins text-dark">MINHA SACOLA</h2>
+        </div>
+        <div class="modal-itens">
+            <p class="roboto text-dark"> Você adicionou <b class="product-name-modal">FACIAL LIP BALM KARITÉ </b> a
+                sua
+                sacola de compras. O que
+                deseja fazer agora?</p>
+        </div>
+        <div class="modal-actions">
+            <a href="https://darlu.darluck.com.br" class="roboto continue" title="Continuar comprando">CONTINUAR COMPRANDO</a>
+            <a href="https://darlu.darluck.com.br/pedido/checkout" class="roboto close jsc-close">FECHAR COMPRA</a>
         </div>
     </div>
 </div>

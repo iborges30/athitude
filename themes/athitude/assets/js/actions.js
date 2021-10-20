@@ -43,12 +43,12 @@ $(function () {
         var url = BASE + '/remove-session';
         var id = $(this).attr("data-product-id");
 
-        $.ajax({
+      /*  $.ajax({
             url: url,
             method: 'post',
             dataType: 'json',
             data: {id: id}
-        });
+        });*/
 
         $(".dialog").animate({bottom: "-999px", opacity: 0}, "slow", function () {
             $(".ajax-modal").empty();
@@ -70,30 +70,66 @@ $(function () {
         }
     });
 
-    var size = null; //ESTA AQUI PARA SER USADO FORA ESTOU PEGANDO SÓ O ID
+    var sizeId = null;
+    var size = null;
+
     //MARCA O TAMANHO ESCOLHIDO
     $(".ajax-product-modal").on("click", ".jsc-size-selected", function () {
-        size = $(this).data("size-id");
+        sizeId = $(this).data("size-id");
+        size = $(this).data("size");
         $(".active-size").css("display", "none");
-        $("#size-" + size).css("display", "block");
+        $("#size-" + sizeId).css("display", "block");
+
+    });
+
+    //TRAZ AS CORES
+    $(".ajax-product-modal").on("click", ".jsc-set-color", function () {
+        var productId = $(".bt-add-buy").attr("data-product-id");
+        var selectedSize = size;
+        console.log(productId, selectedSize);
+        var uri = BASE + '/modal/selected/colors';
+        $.ajax({
+            url: uri,
+            method: "post",
+            data: {productId: productId, selectedSize:selectedSize},
+            dataType: "html",
+            beforeSend:function (){
+                $(".dialog-home-products").slideDown("fast");
+            },
+            success: function (response) {
+                $(".ajax-colors").html(response);
+
+            },
+            complete:function (){
+                $(".dialog-home-products").fadeOut();
+            }
+        });
 
 
     });
 
-    //PRECISO REVER A COR POIS ELA DEVE SER RETORNADA VIA AJAX QUANDO FOR ESCOLHIDO O TAMANHO
+
+    //CORES
+    var colorId = null;
     var color = null;
+
     $(".ajax-product-modal").on("click", ".jsc-color-selected", function () {
-        color = $(this).data("color-id");
+        colorId = $(this).data("color-id");
+        color = $(this).data("color");
+        color = color;
+
         $(".active-color").css("display", "none");
-        $("#color-" + color).css("display", "block");
+        $("#color-" + colorId).css("display", "block");
+        $(".page-item-buy input[name='amount']").val(1);
     });
 
 
     //ADICIONA PRODUTO -- CONTINUAR AQUI
     $(".ajax-product-modal").on("click", ".item-buy-plus", function () {
         var productId = $(".bt-add-buy").attr("data-product-id");
-        var amount = $(".page-item-buy input[name='amount']").val();
-        amount = parseInt(amount) + 1;
+         var amount = $(".page-item-buy input[name='amount']").val();
+        amount = parseInt(amount) +1 ;
+        console.log(amount);
         var uri = BASE + '/single/plus';
 
         if (!size) {
@@ -110,10 +146,14 @@ $(function () {
             url: uri,
             method: "post",
             dataType: "json",
-            data: {amount: amount, productId: productId, attributesId: size},
+            data: {amount: amount, productId: productId, size: size, color:color},
             success: function (response) {
                 if (response.nostock) {
                     message("Ops.", "Quantidade máxima desse produto atingida");
+                   return ;
+                }
+                if(response.amount > 1){
+                    $(".page-item-buy input[name='amount']").val(response.amount);
                 }
 
             }
@@ -125,12 +165,12 @@ $(function () {
     $(".ajax-product-modal").on("click", ".jsc-add-bag", function () {
         var amount = $("input[name='amount']").val();
         var productId = $(this).data("product-id");
-        var attributesId = size;
+
         var price = $(this).data("price");
         var uri = BASE + '/insert/product/session';
 
         if (!size) {
-            message("Ops", " Você deve escolher uma tamanho para para continuar.", "red");
+            message("Ops", "Você deve escolher uma tamanho para para continuar.", "red");
             return;
         }
 
@@ -143,13 +183,13 @@ $(function () {
             url: uri,
             method: 'post',
             dataType: 'json',
-            data: {amount: amount, productId: productId, attributesId: attributesId, price: price},
+            data: {amount: amount, productId: productId, size: size, color:color, price: price},
             success: function (response) {
+                $(".dialog-bag").show();
                 console.log(response);
             }
 
         });
-
         return false;
     });
 
