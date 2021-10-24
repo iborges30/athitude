@@ -57,6 +57,7 @@ class SettingsController extends Admin
 
         //UPDATE
         if (!empty($data["action"]) && $data["action"] == "update") {
+
             $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
             $data["document"] = preg_replace('/[^0-9]/', '', $data["document"]);
             $data["whatsapp"] = preg_replace('/[^0-9]/', '', $data["whatsapp"]);
@@ -80,6 +81,7 @@ class SettingsController extends Admin
             $update->city = $data["city"];
             $update->complement = $data["complement"];
             $update->state = $data["state"];
+
 
             if (!$update->save()) {
                 $json["message"] = $update->message()->render();
@@ -188,6 +190,7 @@ class SettingsController extends Admin
             $aboutCreate->delivery_rate = saveMoney($data["delivery_rate"]);
             $aboutCreate->minimum_order = saveMoney($data["minimum_order"]);
             $aboutCreate->installment = $data["installment"];
+            $aboutCreate->interest_free_installments = $data["interest_free_installments"];
 
 
             if (!$aboutCreate->save()) {

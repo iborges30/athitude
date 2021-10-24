@@ -20,15 +20,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81c51dab-f435-40ad-aa2d-36828399834e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/source/Models/Clients/ClientRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/Models/Clients/Clients.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/Models/Orders/CheckoutValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/Models/Orders/Orders.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/Models/Orders/OrdersItems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/Models/Orders/OrdersRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/athitude.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/athitude.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/App/Admin/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Admin/SettingsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/App/Web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/App/Web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Boot/Helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/Boot/Helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Boot/Minify/Web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source/Boot/Minify/Web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/athitude/_theme.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/_theme.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/athitude/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/athitude/assets/js/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/assets/js/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/athitude/assets/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/assets/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/athitude/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/assets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/athitude/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/athitude/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/checkout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/athitude/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/athitude/modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/athitude/modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/sb-admin/widgets/settings/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/sb-admin/widgets/settings/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +80,15 @@
       <path value="$PROJECT_DIR$/vendor/rosell-dk/webp-convert" />
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/vendor/rosell-dk/image-mime-type-guesser" />
+      <path value="$PROJECT_DIR$/vendor/flyingluscas/correios-php" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
     </include_path>
   </component>
   <component name="ProjectId" id="1zEj3UsydC1vtxFbrfMDrU8rk2T" />
@@ -66,7 +99,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/themes/sb-admin/widgets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/source/Models" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -75,9 +108,9 @@
       <recent name="C:\xampp\htdocs\athitude\source\App\Admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\athitude\source\Models" />
       <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\widgets" />
       <recent name="C:\xampp\htdocs\athitude\source\App\Admin" />
-      <recent name="C:\xampp\htdocs\athitude\source\Models" />
       <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\widgets\product" />
       <recent name="C:\xampp\htdocs\athitude\themes\sb-admin\assets\images" />
     </key>
@@ -136,6 +169,22 @@
       <workItem from="1634758421983" duration="1579000" />
       <workItem from="1634761462827" duration="1805000" />
       <workItem from="1634763294550" duration="225000" />
+      <workItem from="1634823631219" duration="1782000" />
+      <workItem from="1634825510578" duration="1786000" />
+      <workItem from="1634837926860" duration="1768000" />
+      <workItem from="1634839721084" duration="1786000" />
+      <workItem from="1634841553423" duration="1363000" />
+      <workItem from="1634848540184" duration="1785000" />
+      <workItem from="1634850384433" duration="1781000" />
+      <workItem from="1634852191083" duration="1796000" />
+      <workItem from="1634854012842" duration="181000" />
+      <workItem from="1634914335704" duration="5000" />
+      <workItem from="1635012354743" duration="1586000" />
+      <workItem from="1635013966204" duration="1784000" />
+      <workItem from="1635015774624" duration="3394000" />
+      <workItem from="1635019218880" duration="1784000" />
+      <workItem from="1635021079628" duration="1781000" />
+      <workItem from="1635022885339" duration="1092000" />
     </task>
     <servers />
   </component>
@@ -155,14 +204,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="352" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1635015805215">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="352" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1707.920@0.0.1707.920" timestamp="1635015805215" />
     <state x="585" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1634248039751">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="585" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1707.920@0.0.1707.920" timestamp="1634248039751" />
-    <state x="623" y="183" key="NewPhpClassDialog" timestamp="1634242110730">
+    <state x="623" y="183" key="NewPhpClassDialog" timestamp="1635015684007">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state x="623" y="183" key="NewPhpClassDialog/0.0.1707.920@0.0.1707.920" timestamp="1634242110730" />
+    <state x="623" y="183" key="NewPhpClassDialog/0.0.1707.920@0.0.1707.920" timestamp="1635015684007" />
     <state x="690" y="384" key="NewPhpFileDialog" timestamp="1634742617480">
       <screen x="0" y="0" width="1707" height="920" />
     </state>

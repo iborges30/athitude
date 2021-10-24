@@ -20,12 +20,19 @@ $route->namespace("Source\App");
 $route->group(null);
 $route->get("/", "Web:home");
 $route->get("/{page}", "Web:home");
+$route->get("/pedidos/cart", "Web:cart");
+$route->get("/cliente/checkout", "Web:checkout");
 
 
 $route->post("/single/modal", "Web:single");
 $route->post("/single/plus", "Web:plus");
 $route->post("/modal/selected/colors", "Web:colors");
 $route->post("/insert/product/session", "Web:bag");
+$route->post("/remove/item/cart", "Web:remove");
+$route->post("/zipcode", "Web:zipcode");
+$route->post("/priceFrete", "Web:priceFrete");
+$route->post("/document", "Web:document");
+$route->post("/orders", "Web:orders");
 
 
 

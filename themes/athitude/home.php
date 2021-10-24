@@ -1,7 +1,5 @@
 <?php $v->layout("_theme"); ?>
-<?php
-var_dump($_SESSION["cart"]);
-?>
+
 <div class="dialog-home-products ds-none">
     <div class="box-load">
         <img src="<?=theme("/assets/images/loadball.gif");?>" alt="load">

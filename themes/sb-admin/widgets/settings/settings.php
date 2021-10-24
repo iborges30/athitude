@@ -227,25 +227,33 @@
                                       name="formRate">
                                     <input type="hidden" value="updateRate" name="action">
                                     <div class="form-row">
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-3">
                                             <label for="inputEmail4">Taxa de entrega</label>
                                             <input type="text" class="form-control" name="delivery_rate"
                                                    value="<?= str_price($enterprise->delivery_rate); ?>"
                                                    placeholder="Taxa de entrega">
                                         </div>
 
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-3">
                                             <label for="inputPassword4">Pedido mínimo</label>
                                             <input type="text" class="form-control" name="minimum_order"
                                                    placeholder="Valor mínimo para realizar um pedido"
                                                    value="<?= str_price($enterprise->minimum_order); ?>">
                                         </div>
 
-                                        <div class="form-group col-md-4">
+
+                                        <div class="form-group col-md-3">
                                             <label for="inputPassword4">Quantidade de parcelas</label>
                                             <input type="number" class="form-control" name="installment"
                                                    placeholder="Valor mínimo para realizar um pedido"
                                                    value="<?= $enterprise->installment; ?>">
+                                        </div>
+
+                                        <div class="form-group col-md-3">
+                                            <label for="inputPassword4">Parc. sem juros</label>
+                                            <input type="text" class="form-control" name="interest_free_installments"
+                                                   placeholder="Valor mínimo para parcelamento"
+                                                   value="<?= $enterprise->interest_free_installments; ?>">
                                         </div>
 
 

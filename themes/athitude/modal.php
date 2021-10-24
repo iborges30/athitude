@@ -8,7 +8,7 @@
             </div>
 
             <div class="page-item-title">
-                <h1 class="poppins text-dark"><?= $product->name; ?></h1>
+                <h1 class="poppins text-dark jsc-product-name"><?= $product->name; ?></h1>
             </div>
         </div>
         <div class="row">
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-70">
                 <div class="product-descripition-items">
-                    <p class="roboto text-dark">Código: <?= $product->code; ?> </p>
+                    <p class="roboto text-dark">Código: <span class="jsc-code-item"><?= $product->code; ?></span> </p>
                 </div>
                 <div class="product-descripition-items">
                     <p class="roboto text-dark">Categoria: <?= $category->category; ?> </p>
@@ -116,14 +116,14 @@
             <h2 class="poppins text-dark">MINHA SACOLA</h2>
         </div>
         <div class="modal-itens">
-            <p class="roboto text-dark"> Você adicionou <b class="product-name-modal">FACIAL LIP BALM KARITÉ </b> a
+            <p class="roboto text-dark"> Você adicionou <b class="product-name-modal"> </b> a
                 sua
                 sacola de compras. O que
                 deseja fazer agora?</p>
         </div>
         <div class="modal-actions">
-            <a href="https://darlu.darluck.com.br" class="roboto continue" title="Continuar comprando">CONTINUAR COMPRANDO</a>
-            <a href="https://darlu.darluck.com.br/pedido/checkout" class="roboto close jsc-close">FECHAR COMPRA</a>
+            <a href="<?= url();?>" class="roboto continue" title="Continuar comprando">CONTINUAR COMPRANDO</a>
+            <a href="<?= url("/pedidos/cart");?>" class="roboto close jsc-close">FECHAR COMPRA</a>
         </div>
     </div>
 </div>

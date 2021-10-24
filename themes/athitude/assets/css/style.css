@@ -885,3 +885,57 @@ nav.paginator .paginator_item {
     margin-bottom: 20px;
     text-align: center;
 }
+
+.bg-color-item {
+    padding: 1px 5px;
+    margin-left: 5px;
+    background: red;
+    border-radius: 100%;
+}
+.attributes-cart-item {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+.dialog-complete,
+.dialog-complete-orders {
+    background: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 0;
+    height: 100%;
+    z-index: 99;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.modal-complete {
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+    display: none;
+    padding: 30px;
+    border-radius: 8px;
+    border: 2px solid #1aad30;
+    background: #fcfffc;
+    color: #111;
+}
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #fff;
+    border-radius: 8px;
+}
+.warning,
+.error {
+    border: 1px solid rgba(255, 0, 0, 0.774);
+    background: rgba(255, 0, 0, 0.842);
+}
+.info {
+    background: #ec9b08;
+    border: 1px solid #ec9b08;
+}
+.jconfirm-content{
+    font-family: Roboto;
+}

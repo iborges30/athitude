@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '757989e71a93efc5687e738e620140ab1e6e8781',
+    'reference' => 'f9bc24cbb7a8c4ad1bac384e4abb8422926dafe8',
     'name' => 'upinside/fsphp',
   ),
   'versions' => 
@@ -69,6 +69,42 @@ private static $installed = array (
       ),
       'reference' => '182682c029ff23d28aa8f5d7db2db4c060fc3ae4',
     ),
+    'flyingluscas/correios-php' => 
+    array (
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '63e651dd68474b60a9aadfc680c16d89de7df952',
+    ),
+    'guzzlehttp/guzzle' => 
+    array (
+      'pretty_version' => '7.4.0',
+      'version' => '7.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '868b3571a039f0ebc11ac8f344f4080babe2cb94',
+    ),
+    'guzzlehttp/promises' => 
+    array (
+      'pretty_version' => '1.5.0',
+      'version' => '1.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '136a635e2b4a49b9d79e9c8fee267ffb257fdba0',
+    ),
+    'guzzlehttp/psr7' => 
+    array (
+      'pretty_version' => '2.1.0',
+      'version' => '2.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '089edd38f5b8abba6cb01567c2a8aaa47cec4c72',
+    ),
     'league/plates' => 
     array (
       'pretty_version' => 'v4.0.0-alpha',
@@ -105,6 +141,63 @@ private static $installed = array (
       ),
       'reference' => 'dd803df5ad7492e1b40637f7ebd258fee5ca7355',
     ),
+    'psr/http-client' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
+    ),
+    'psr/http-client-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'psr/http-factory' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
+    ),
+    'psr/http-factory-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'psr/http-message' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
+    ),
+    'psr/http-message-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'ralouphie/getallheaders' => 
+    array (
+      'pretty_version' => '3.0.3',
+      'version' => '3.0.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+    ),
     'rosell-dk/image-mime-type-guesser' => 
     array (
       'pretty_version' => '0.3.1',
@@ -123,6 +216,15 @@ private static $installed = array (
       ),
       'reference' => 'b349da7b6e04a4c269bbbbf7c279e0e433a71fd0',
     ),
+    'symfony/deprecation-contracts' => 
+    array (
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5f38c8804a9e97d23e0c8d63341088cd8a22d627',
+    ),
     'upinside/fsphp' => 
     array (
       'pretty_version' => 'dev-master',
@@ -130,7 +232,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '757989e71a93efc5687e738e620140ab1e6e8781',
+      'reference' => 'f9bc24cbb7a8c4ad1bac384e4abb8422926dafe8',
     ),
   ),
 );

@@ -11,7 +11,7 @@
  Target Server Version : 100417
  File Encoding         : 65001
 
- Date: 08/10/2021 17:50:52
+ Date: 24/10/2021 18:25:09
 */
 
 SET NAMES utf8mb4;
@@ -391,13 +391,17 @@ CREATE TABLE `brands`  (
   `user_id` int(11) NULL DEFAULT NULL,
   `lastupdate` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of brands
 -- ----------------------------
 INSERT INTO `brands` VALUES (1, 'Atelie Ponto reto', 'atelie-ponto-reto', '2021-10-06 06:01:09', 51, '2021-10-06 06:01:17');
 INSERT INTO `brands` VALUES (2, 'teste 2', 'teste-2', '2021-10-06 06:03:43', 51, '2021-10-08 21:29:17');
+INSERT INTO `brands` VALUES (3, 'Teste', 'teste', '2021-10-12 00:12:02', 51, NULL);
+INSERT INTO `brands` VALUES (4, 'blabalba', 'blabalba', '2021-10-12 00:12:53', 51, NULL);
+INSERT INTO `brands` VALUES (5, 'Aqui Também', 'aqui-tambem', '2021-10-12 22:13:11', 51, NULL);
+INSERT INTO `brands` VALUES (6, 'Fab3', 'fab3', '2021-10-12 23:01:21', 51, NULL);
 
 -- ----------------------------
 -- Table structure for categories
@@ -421,6 +425,70 @@ CREATE TABLE `categories`  (
 INSERT INTO `categories` VALUES (1, 'Controle', 'controle', 'Dicas e sacadas sobre como controlar suas contas com CaféControl. Vamos tomar um ótimo café?', NULL, 'post', '2018-10-22 15:24:12', '2018-10-22 15:24:12');
 INSERT INTO `categories` VALUES (2, 'Contas', 'contas', 'Dicas e sacadas sobre como controlar suas contas com CaféControl. Vamos tomar um ótimo café?', 'images/2018/10/aprenda-a-criar-um-componente-de-notificacao-para-seu-site-1527515035.jpg', 'post', '2018-11-01 16:32:57', '2019-02-07 07:35:54');
 INSERT INTO `categories` VALUES (3, 'Finanças', 'financas', 'Dicas e sacadas sobre como controlar suas contas com CaféControl. Vamos tomar um ótimo café?', NULL, 'post', '2018-11-01 16:33:05', '2018-11-01 16:33:27');
+
+-- ----------------------------
+-- Table structure for clients
+-- ----------------------------
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE `clients`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `document` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `zipcode` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `square` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `number` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `state` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `complement` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `reference` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of clients
+-- ----------------------------
+INSERT INTO `clients` VALUES (1, 'Isaac', '00571269176', '65996622520', 'isaac.borgestga@hotmail.com', '78303-018', 'Rua J', 'Tangará da Serra', 'Tarumã', '1855', 'MT', 'N', 'Perto do campinho da Cohab');
+INSERT INTO `clients` VALUES (2, 'RAULYE ADRIANO SANTOS', '86587790178', '65992343758', 'raulyeadriano@gmail.com', '78300-000', 'RUA 06', 'Tangará da Serra', 'Nazaré', '213', 'MT', 'S', 'Próximo Padaria');
+INSERT INTO `clients` VALUES (3, 'Edilaine de Sousa Viana ', '03066653102', '65996622520', 'isaac.borgestga@hotmail.com', '78360-000', 'Rua J', 'Campo Novo do Parecis', 'Centro', '1855', 'MT', 'Ne', 'Perto do campinho');
+INSERT INTO `clients` VALUES (4, 'Leni Roberto de Sousa Santos ', '61644625172', '65996031096', 'lenirobertto8@gmail.com', '78307-134', 'Rua 6 ', 'Tangará da Serra ', 'Jardim Nazare', '213', 'Mato Grosso ', 'S', 'Perto da padaria ');
+INSERT INTO `clients` VALUES (5, 'Vandeogracia  da Silva', '52224643187', '6599574649', 'vandeograciadasilva@gmail.com', '78307-104', 'rua 4 ', 'Tangará da Serra', 'residencial paris b vila Goiânia ', '1475', 'MT', 'e', '');
+
+-- ----------------------------
+-- Table structure for enterprises
+-- ----------------------------
+DROP TABLE IF EXISTS `enterprises`;
+CREATE TABLE `enterprises`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `enterprise` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `document` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `whatsapp` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `zip_code` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `number` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `district` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `city` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `complement` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `state` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `category` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `information` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created` timestamp NULL DEFAULT NULL,
+  `delivery_rate` decimal(10, 2) NULL DEFAULT NULL,
+  `minimum_order` decimal(10, 2) NULL DEFAULT NULL,
+  `interest_free_installments` int(11) NULL DEFAULT NULL,
+  `installment` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of enterprises
+-- ----------------------------
+INSERT INTO `enterprises` VALUES (1, 'Athitude Moda Fitness', 'athitude-moda-fitness', '15192203000102', '6599254550', '78360000', 'Rua Arlindo Nogueira Gomes', ' 90', 'Parque das Mansões', 'Tangará da Serra', 'W', 'MT', 51, 'SABONETES E COSMÉTICOS', 'Condições Especiais para sua compra em nossa loja e site.', 'images/2020/12/darluck.png', '2020-12-03 04:59:26', 5.00, 13.30, 3, 12);
 
 -- ----------------------------
 -- Table structure for faq_channels
@@ -469,6 +537,47 @@ INSERT INTO `faq_questions` VALUES (6, 1, 'Sobre a UpInside Treinamentos', '<p>A
 INSERT INTO `faq_questions` VALUES (8, 1, 'Ainda com dúvidas?', '<p>Caso ainda tenha qualquer dúvida, fique a vontade para entrar em contato consoco em nossos canais de atendimento. Estamos aqui para te ajudar a controlar suas contas enquanto toma um ótimo café :)</p>', 6, '2018-10-22 08:11:58', '2018-10-22 08:12:42');
 INSERT INTO `faq_questions` VALUES (9, 10, 'Tudo já está implementado e testado?', 'Todo o MVP do painel foi implementado e testado. Óbvio que cabe a cada um melhorar e gerar mais valor nessa que pode ser uma incrível ferramenta.', 1, '2019-02-07 08:34:10', '2019-02-07 11:57:57');
 INSERT INTO `faq_questions` VALUES (10, 10, 'Teremos mais implementações no curso?', 'No curso não, mas teremos HandOns (lives) de implementação para que possamos nos aprofundar cada vez mais na ferramenta.', 1, '2019-02-07 08:35:06', '2019-02-07 11:57:59');
+
+-- ----------------------------
+-- Table structure for gallery
+-- ----------------------------
+DROP TABLE IF EXISTS `gallery`;
+CREATE TABLE `gallery`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NULL DEFAULT NULL,
+  `uri` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `product_id`(`product_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of gallery
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for inventory
+-- ----------------------------
+DROP TABLE IF EXISTS `inventory`;
+CREATE TABLE `inventory`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NULL DEFAULT NULL,
+  `size` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `color` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `amount` int(11) NULL DEFAULT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `created` timestamp NULL DEFAULT NULL,
+  `lastupdate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `product_id`(`product_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of inventory
+-- ----------------------------
+INSERT INTO `inventory` VALUES (1, 1, 'P', '#000000', 1, 51, '2021-10-18 23:09:34', NULL);
+INSERT INTO `inventory` VALUES (2, 3, 'G', '#000000', 10, 51, '2021-10-18 23:10:23', NULL);
+INSERT INTO `inventory` VALUES (3, 3, 'G', 'red', 9, 51, '2021-10-18 23:10:23', NULL);
+INSERT INTO `inventory` VALUES (4, 2, 'P', '#000000', 6, 51, '2021-10-21 20:41:57', NULL);
 
 -- ----------------------------
 -- Table structure for mail_queue
@@ -525,6 +634,81 @@ INSERT INTO `notifications` VALUES (9, 'https://www.localhost/phptest/fsphplib/t
 INSERT INTO `notifications` VALUES (10, 'https://www.localhost/phptest/fsphplib/themes/cafeadm/assets/images/notify.jpg', 'Fernanda Santos assinou o plano PRO de R$ 5,00/mês', 'https://www.localhost/fsphp/admin/control/subscription/8', 0, '2019-02-11 09:44:59', '2019-02-12 08:53:17');
 INSERT INTO `notifications` VALUES (11, 'https://www.localhost/phptest/fsphplib/themes/cafeadm/assets/images/notify.jpg', 'Bia Santos assinou o plano PRO de R$ 5,00/mês', 'https://www.localhost/fsphp/admin/control/subscription/4', 0, '2019-02-11 08:53:35', '2019-02-12 08:53:17');
 INSERT INTO `notifications` VALUES (12, 'https://www.localhost/phptest/fsphplib/themes/cafeadm/assets/images/notify.jpg', 'Maria Santos assinou o plano PRO de R$ 5,00/mês', 'https://www.localhost/fsphp/admin/control/subscription/5', 0, '2019-02-11 08:53:35', '2019-02-12 08:53:17');
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `client_id` int(11) NULL DEFAULT NULL,
+  `document` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `total_orders` decimal(10, 2) NULL DEFAULT NULL,
+  `payment_method` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `installments` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created` timestamp NULL DEFAULT NULL,
+  `lastupdate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `processed` int(11) NULL DEFAULT NULL,
+  `notification` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sendOrders` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `delivery_rate` decimal(10, 2) NULL DEFAULT NULL,
+  `deadline` int(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (1, 'Isaac', 1, '00571269176', 240.22, '1', '1', 'new', '2021-10-23 22:26:04', NULL, NULL, 'open', '65996622520', 'Sedex', 24.90, 2);
+INSERT INTO `orders` VALUES (2, 'Isaac', 1, '00571269176', 240.22, 'credit', '1', 'new', '2021-10-23 22:28:42', NULL, NULL, 'open', '65996622520', 'Sedex', 24.90, 2);
+INSERT INTO `orders` VALUES (3, 'Isaac', 1, '00571269176', 240.22, 'credit', '1', 'new', '2021-10-23 22:29:02', NULL, NULL, 'open', '65996622520', 'Sedex', 24.90, 2);
+INSERT INTO `orders` VALUES (4, 'Isaac', 1, '00571269176', 227.70, 'credit', '5', 'new', '2021-10-23 22:34:52', NULL, NULL, 'open', '65996622520', 'Sedex', 27.70, 5);
+INSERT INTO `orders` VALUES (5, 'Isaac', 1, '00571269176', 139.62, 'money', '1', 'new', '2021-10-23 22:37:09', NULL, NULL, 'open', '65996622520', 'PAC', 24.30, 10);
+INSERT INTO `orders` VALUES (6, 'Isaac', 1, '00571269176', 10.00, 'debit', '7', 'new', '2021-10-23 22:40:45', NULL, NULL, 'open', '65996622520', 'store', 0.00, 0);
+INSERT INTO `orders` VALUES (7, 'Isaac', 1, '00571269176', 227.70, 'money', '1', 'new', '2021-10-23 22:45:50', NULL, NULL, 'open', '65996622520', 'Sedex', 27.70, 5);
+INSERT INTO `orders` VALUES (8, 'Isaac', 1, '00571269176', 227.70, 'money', '1', 'new', '2021-10-23 22:46:36', NULL, NULL, 'open', '65996622520', 'Sedex', 27.70, 5);
+INSERT INTO `orders` VALUES (9, 'Isaac', 1, '00571269176', 227.70, 'credit', '1', 'new', '2021-10-23 23:07:49', NULL, NULL, 'open', '65996622520', 'Sedex', 27.70, 5);
+INSERT INTO `orders` VALUES (10, 'Isaac', 1, '00571269176', 227.70, 'credit', '1', 'new', '2021-10-23 23:08:40', NULL, NULL, 'open', '65996622520', 'Sedex', 27.70, 5);
+INSERT INTO `orders` VALUES (11, 'Isaac', 1, '00571269176', 227.70, 'money', '1', 'new', '2021-10-23 23:09:48', NULL, NULL, 'open', '65996622520', 'Sedex', 27.70, 5);
+INSERT INTO `orders` VALUES (12, 'Isaac', 1, '00571269176', 224.30, 'money', '1', 'new', '2021-10-23 23:12:27', NULL, NULL, 'open', '65996622520', 'PAC', 24.30, 10);
+INSERT INTO `orders` VALUES (13, 'Isaac', 1, '00571269176', 224.30, 'credit', '6', 'new', '2021-10-23 23:14:15', NULL, NULL, 'open', '65996622520', 'PAC', 24.30, 10);
+INSERT INTO `orders` VALUES (14, 'Isaac', 1, '00571269176', 127.70, 'money', '1', 'new', '2021-10-23 23:18:41', NULL, NULL, 'open', '65996622520', 'Sedex', 27.70, 5);
+
+-- ----------------------------
+-- Table structure for orders_items
+-- ----------------------------
+DROP TABLE IF EXISTS `orders_items`;
+CREATE TABLE `orders_items`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NULL DEFAULT NULL,
+  `product_id` int(11) NULL DEFAULT NULL,
+  `size` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `amount` int(11) NULL DEFAULT NULL,
+  `price` decimal(10, 2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orders_items
+-- ----------------------------
+INSERT INTO `orders_items` VALUES (1, 1, 2, 'P', NULL, 1, NULL);
+INSERT INTO `orders_items` VALUES (2, 1, 1, 'P', NULL, 2, NULL);
+INSERT INTO `orders_items` VALUES (3, 4, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (4, 5, 1, 'P', '#000000', 1, 100.00);
+INSERT INTO `orders_items` VALUES (5, 5, 2, 'P', '#000000', 1, 15.32);
+INSERT INTO `orders_items` VALUES (6, 6, 3, 'G', 'red', 1, 10.00);
+INSERT INTO `orders_items` VALUES (7, 7, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (8, 8, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (9, 9, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (10, 10, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (11, 11, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (12, 12, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (13, 13, 1, 'P', '#000000', 2, 100.00);
+INSERT INTO `orders_items` VALUES (14, 14, 1, 'P', '#000000', 1, 100.00);
 
 -- ----------------------------
 -- Table structure for posts
@@ -611,14 +795,14 @@ CREATE TABLE `products`  (
   `created` timestamp NULL DEFAULT NULL,
   `lastupdate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (2, 'teste', '03', 'images/2021/10/teste-1633729666.jpg', 45.00, 'teste', 1, 1, 'teste', 'active', 51, 12.00, 12.00, 12.00, 12.00, NULL, '2021-10-08 23:47:46', '2021-10-08 17:48:55');
-INSERT INTO `products` VALUES (3, 'teste', '01', 'images/2021/10/teste-1633729738.jpg', 45.00, 'teste-4', 1, 1, 'teste', 'active', 51, 12.00, 12.00, 12.00, 12.00, NULL, '2021-10-08 23:48:58', NULL);
-INSERT INTO `products` VALUES (4, 'teste', '010', NULL, 45.00, 'teste-5', 1, 1, 'teste', 'active', 51, 12.00, 12.00, 12.00, 12.00, NULL, '2021-10-08 23:50:11', NULL);
+INSERT INTO `products` VALUES (1, 'teste 1', '1', 'images/2021/10/teste-1-1634591095.jpg', 100.00, 'teste-1', 5, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum odio id eros congue vulputate. Proin sem ligula, commodo eu malesuada eu, porttitor in nulla. Quisque accumsan imperdiet felis, vel venenatis erat laoreet porta. Class aptent taciti sociosqu ad litora', 'active', 51, 20.00, 20.00, 10.00, 0.40, NULL, '2021-10-18 23:04:43', '2021-10-21 18:05:38');
+INSERT INTO `products` VALUES (2, 'produto 2', '', 'images/2021/10/produto-2-1634591438.jpg', 15.32, 'produto-2', 5, 5, 'produto 2', 'active', 51, 20.00, 20.00, 20.00, 0.40, NULL, '2021-10-18 23:10:10', '2021-10-21 20:58:59');
+INSERT INTO `products` VALUES (3, 'produto 3', '2', 'images/2021/10/produto-2-1634591438.jpg', 10.00, 'produto-2', 5, 5, 'produto 2', 'active', 51, 1.00, 1.00, 11.00, 1.00, NULL, '2021-10-18 23:10:10', '2021-10-18 23:10:38');
 
 -- ----------------------------
 -- Table structure for products_categories
@@ -632,13 +816,17 @@ CREATE TABLE `products_categories`  (
   `user_id` int(11) NULL DEFAULT NULL,
   `lastupdate` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of products_categories
 -- ----------------------------
 INSERT INTO `products_categories` VALUES (1, 'Teste 2', 'teste-2', '2021-10-06 05:40:52', 51, '2021-10-08 21:29:08');
 INSERT INTO `products_categories` VALUES (2, 'Teste 3', 'teste-3', '2021-10-06 05:42:56', 51, '2021-10-06 05:43:14');
+INSERT INTO `products_categories` VALUES (3, 'fio', 'fio', '2021-10-12 00:23:44', 51, NULL);
+INSERT INTO `products_categories` VALUES (4, 'Foi', 'foi', '2021-10-12 22:13:03', 51, NULL);
+INSERT INTO `products_categories` VALUES (5, 'Blusas', 'cat3', '2021-10-12 23:01:15', 51, NULL);
+INSERT INTO `products_categories` VALUES (6, 'Conjuntos', 'conjuntos', '2021-10-18 21:48:35', 51, NULL);
 
 -- ----------------------------
 -- Table structure for report_access
@@ -652,7 +840,7 @@ CREATE TABLE `report_access`  (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of report_access
@@ -663,6 +851,15 @@ INSERT INTO `report_access` VALUES (3, 2, 2, 79, '2021-10-02 10:49:43', '2021-10
 INSERT INTO `report_access` VALUES (4, 2, 2, 35, '2021-10-05 23:14:53', '2021-10-05 23:57:42');
 INSERT INTO `report_access` VALUES (5, 1, 1, 19, '2021-10-06 00:00:53', '2021-10-06 00:06:07');
 INSERT INTO `report_access` VALUES (6, 2, 2, 99, '2021-10-08 15:27:28', '2021-10-08 17:50:12');
+INSERT INTO `report_access` VALUES (7, 1, 3, 20, '2021-10-11 11:33:23', '2021-10-11 20:34:19');
+INSERT INTO `report_access` VALUES (8, 1, 1, 11, '2021-10-12 16:13:31', '2021-10-12 16:53:21');
+INSERT INTO `report_access` VALUES (9, 1, 1, 20, '2021-10-14 15:36:53', '2021-10-14 18:00:27');
+INSERT INTO `report_access` VALUES (10, 2, 1, 39, '2021-10-17 14:54:17', '2021-10-17 15:43:48');
+INSERT INTO `report_access` VALUES (11, 2, 2, 148, '2021-10-18 15:46:14', '2021-10-18 18:16:02');
+INSERT INTO `report_access` VALUES (12, 1, 1, 309, '2021-10-19 14:03:57', '2021-10-19 18:28:44');
+INSERT INTO `report_access` VALUES (13, 1, 2, 291, '2021-10-20 10:36:14', '2021-10-20 16:58:08');
+INSERT INTO `report_access` VALUES (14, 1, 3, 459, '2021-10-21 09:39:59', '2021-10-21 18:08:29');
+INSERT INTO `report_access` VALUES (15, 1, 1, 196, '2021-10-23 14:02:07', '2021-10-23 17:18:41');
 
 -- ----------------------------
 -- Table structure for report_online
@@ -678,115 +875,12 @@ CREATE TABLE `report_online`  (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of report_online
 -- ----------------------------
-INSERT INTO `report_online` VALUES (12, 51, '::1', '/ops/404', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36', 1, '2021-10-08 17:50:12', '2021-10-08 17:50:12');
-
--- ----------------------------
--- Table structure for stocks
--- ----------------------------
-DROP TABLE IF EXISTS `stocks`;
-CREATE TABLE `stocks`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NULL DEFAULT NULL,
-  `user_id` int(11) NULL DEFAULT NULL,
-  `size` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `color` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `amount` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 114 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of stocks
--- ----------------------------
-INSERT INTO `stocks` VALUES (4, 3, 51, 'Padrão', 'Padrão', 1);
-INSERT INTO `stocks` VALUES (5, 5, 51, 'Padrão', 'Padrão', 1);
-INSERT INTO `stocks` VALUES (6, 5, 51, 'Padrão', 'Padrão', 1);
-INSERT INTO `stocks` VALUES (7, 4, 51, 'P', '#000000', 10);
-INSERT INTO `stocks` VALUES (8, 6, 51, 'Único', 'Único', 10);
-INSERT INTO `stocks` VALUES (9, 7, 51, 'Único', 'Único', 9);
-INSERT INTO `stocks` VALUES (10, 1, 51, '10', '#000000', 2);
-INSERT INTO `stocks` VALUES (11, 8, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (12, 9, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (13, 10, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (14, 11, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (15, 12, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (16, 13, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (17, 14, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (18, 15, 52, 'Único', 'Único', 4);
-INSERT INTO `stocks` VALUES (19, 16, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (20, 17, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (21, 18, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (22, 19, 52, 'Único', 'Único', 5);
-INSERT INTO `stocks` VALUES (23, 20, 52, 'Único', 'Único', 8);
-INSERT INTO `stocks` VALUES (24, 21, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (25, 22, 52, 'Único', 'Único', 2);
-INSERT INTO `stocks` VALUES (26, 23, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (27, 24, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (28, 25, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (29, 26, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (30, 27, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (31, 28, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (32, 29, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (33, 30, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (35, 32, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (36, 33, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (37, 34, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (38, 35, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (39, 36, 52, 'Único', 'Único', 2);
-INSERT INTO `stocks` VALUES (40, 37, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (41, 38, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (42, 39, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (43, 40, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (44, 41, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (45, 42, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (46, 43, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (48, 45, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (49, 46, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (50, 47, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (52, 49, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (58, 53, 52, 'GG', '#ff0000', 1);
-INSERT INTO `stocks` VALUES (59, 55, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (60, 56, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (61, 57, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (62, 58, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (63, 59, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (65, 44, 51, 'Único', '#000000', 1);
-INSERT INTO `stocks` VALUES (68, 60, 52, '16', '#0013ff', 1);
-INSERT INTO `stocks` VALUES (70, 61, 52, '16', '#ff00c8', 0);
-INSERT INTO `stocks` VALUES (73, 62, 52, '24', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (76, 63, 52, '15', '#00ff40', 1);
-INSERT INTO `stocks` VALUES (77, 63, 52, '16', '#00ff40', 1);
-INSERT INTO `stocks` VALUES (78, 64, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (80, 65, 52, '27', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (82, 66, 52, '28', '#ff0000', 1);
-INSERT INTO `stocks` VALUES (84, 67, 52, '16', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (86, 68, 52, '13', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (87, 68, 52, '15', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (88, 68, 52, '20', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (90, 69, 52, '14', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (91, 69, 52, '18', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (92, 69, 52, '11', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (94, 70, 52, '24', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (96, 71, 52, '26', '#ffffff', 1);
-INSERT INTO `stocks` VALUES (97, 72, 52, 'Único', 'Único', 1);
-INSERT INTO `stocks` VALUES (98, 51, 52, 'GG', '#000000', 1);
-INSERT INTO `stocks` VALUES (99, 51, 52, 'GG', '#00eeff', 1);
-INSERT INTO `stocks` VALUES (100, 51, 52, 'M', '#00eeff', 1);
-INSERT INTO `stocks` VALUES (102, 51, 52, 'gg', '#f49e95', 1);
-INSERT INTO `stocks` VALUES (103, 50, 52, 'GG', '#ff0000', 1);
-INSERT INTO `stocks` VALUES (104, 50, 52, 'G', '#ff0000', 1);
-INSERT INTO `stocks` VALUES (105, 50, 52, 'GG', '#ffa270', 1);
-INSERT INTO `stocks` VALUES (106, 50, 52, 'p', '#ffa270', 1);
-INSERT INTO `stocks` VALUES (107, 50, 52, 'p', '#1f710e', 1);
-INSERT INTO `stocks` VALUES (108, 48, 52, 'g', '#ff7024', 1);
-INSERT INTO `stocks` VALUES (109, 48, 52, 'GG', '#ff7024', 1);
-INSERT INTO `stocks` VALUES (110, 52, 52, 'M', '#09227b', 1);
-INSERT INTO `stocks` VALUES (111, 52, 52, 'GG', '#790b0b', 1);
-INSERT INTO `stocks` VALUES (113, 54, 52, 'G', '#000000', 1);
+INSERT INTO `report_online` VALUES (39, 51, '::1', '/orders', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36', 28, '2021-10-23 17:07:41', '2021-10-23 17:18:41');
 
 -- ----------------------------
 -- Table structure for users

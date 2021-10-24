@@ -1,4 +1,14 @@
-<?php require("inc/header.php"); ?>
+<?php $v->layout("_theme"); ?>
+
+<?php
+var_dump($_SESSION["cart"]);
+if (!empty($_SESSION["cart"])):
+    ?>
+    <div class="dialog-complete">
+        <div class="modal-load">
+            <img src="<?= theme("/assets/images/load.gif", CONF_VIEW_THEME); ?>">
+        </div>
+    </div>
 
     <div class="orders">
         <div class="row">
@@ -9,17 +19,11 @@
             </div>
             <div class="col-1">
                 <div class="orders-client poppins">
-                    <form action="#" method="post" name="formCompletedOrder">
+                    <form action="<?= url("/orders"); ?>" method="post" name="formCompletedOrder">
                         <input type="hidden" name="delivery_rate">
                         <input type="hidden" name="deadline">
-                        <input type="hidden" name="csrf" value="39cc6326ca75eba3cd601b3a489f7ec8">
+                        <?= csrf_input(); ?>
                         <div class="ajax_response"></div>
-                        <div class="form-group">
-                            <label>
-                                <span class="color-dark ">NOME DO CLIENTE</span>
-                            </label>
-                            <input type="text" name="name" required="" placeholder="Informe seu nome completo">
-                        </div>
 
                         <div class="form-group">
                             <label>
@@ -28,6 +32,15 @@
                             <input type="tel" name="document" class="mask-document jsc-document"
                                    placeholder="Informe seu cpf" required="" maxlength="14">
                         </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="color-dark ">NOME DO CLIENTE</span>
+                            </label>
+                            <input type="text" class="ajax-name-client"
+                                   name="name" required="" placeholder="Informe seu nome completo">
+                        </div>
+
 
                         <div class="form-group">
                             <label>
@@ -63,7 +76,9 @@
                                     <label>
                                         <span class="color-dark ">CEP</span>
                                     </label>
-                                    <input type="tel" class="mask-zipcode wc_getCep ajax-zipcode" name="zipcode"
+                                    <input type="tel"
+                                           class="mask-zipcode wc_getCep ajax-zipcode"
+                                           name="zipcode"
                                            placeholder="Informe o CEP" maxlength="9">
                                 </div>
 
@@ -124,14 +139,55 @@
                                 <span class="color-dark ">FORMA DE ENTREGA</span>
                             </label>
                             <select name="sendOrders" required="required">
-                                <option disabled="" selected="">Selecionem uma forma de entrega</option>
-                                <option value="Sedex">Sedex - R$ 27,70 - 4 dias</option>
-                                <option value="PAC">PAC - R$ 24,30 - 8 dias</option>
+                                <
+                                <option disabled="" selected>Selecionem uma forma de entrega</option>
+                                <?php foreach ($_SESSION["zipcode"] as $p) : ?>
+                                    <option value="<?= $p['name']; ?>"><?= $p['name']; ?> -
+                                        R$ <?= str_price($p['price']); ?> - <?= $p['deadline']; ?> dias
+                                    </option>
+                                <?php endforeach; ?>
                                 <option value="store">Retirar na Loja - R$ 0</option>
+
                             </select>
                         </div>
 
-                    </form>
+                        <h2 class="poppins text-dark roboto center">FORMA DE PAGAMENTO</h2>
+                        <div class="form-group">
+                            <label>
+                                <span class="text-dark roboto">FORMA DE PAGAMENTO</span>
+                            </label>
+                            <select name="payment_method" required="" class="paymen-method">
+                                <option disabled="" selected="">Selecione um método de pagamento</option>
+                                <?php foreach (paymentMethod() as $key => $value): ?>
+                                    <option value="<?= $key; ?>"><?= $value; ?></option>
+                                <?php endforeach; ?>
+
+                            </select>
+
+
+                            <div class="payment-credit-card ds-none">
+                                <label>
+                                    <span class="text-dark roboto">Parcelamento</span>
+                                </label>
+
+                                <select name="installments">
+
+                                    //REGRA PARA A QUANTIDADE DE PARCELAS
+                                    <?php $limit = $enterprise->installment;
+                                    foreach ($installments as $installment) :
+                                    if ($limit >= $installment['installment']) :
+                                    ?>
+                                    <option value="<?= $installment['installment'] ?>">
+                                        <?= $installment['installment'] . ' x R$ ' . str_price($installment['value']) ?>
+                                    </option>
+                                    <?php
+                                            endif;
+                                        endforeach;
+                                        ?>
+                                    <option disabled="">Selecione a quantidade de parcelas</option>
+                                </select>
+                            </div>
+                        </div>
                 </div>
             </div>
             <!----- CARTÃO --->
@@ -145,25 +201,29 @@
                     <h2 class=" color-dark mb-30">RESUMO DO PEDIDO</h2>
                     <div class="order">
                         <ul>
-                            <li class="mt-10">
-                                <div class="order-itens">
-                                    <span>1x</span>
-                                    <span>Anel Feminino Estilo Formatura Verde Esmeralda - <b>Tamanho</b> 15</span>
-                                    <span><b>Código</b> AE 0921</span>
-                                </div>
-                            </li>
-
-                            <li class="mt-10">
-                                <div class="order-itens">
-                                    <span>1x</span>
-                                    <span>Anel Feminino Estilo Formatura Verde Esmeralda - <b>Tamanho</b> 15</span>
-                                    <span><b>Código</b> AE 0921</span>
-                                </div>
-                            </li>
+                            <?php
+                            //REGRA PARA O VALOR MÍNIMO
+                            //FOREACH PARA SABER O TOTAL
+                            $total = null;
+                            if (!empty($_SESSION["cart"])) :
+                                foreach ($_SESSION["cart"] as $p) :
+                                    $total += ($p["amount"] * $p["price"]);
+                                    ?>
+                                    <li>
+                                        <div class="order-itens">
+                                            <span><?= $p["amount"]; ?>x</span>
+                                            <span><?= $p["productName"]; ?> - <b>Tamanho</b> <?= $p["size"]; ?></span>
+                                            <span><b>Código</b> <?= $p["code"]; ?></span>
+                                        </div>
+                                    </li>
+                                <?php
+                                endforeach;
+                            endif;
+                            ?>
 
                         </ul>
                         <div class="order-total mt-30">
-                            <p><b>TOTAL ITENS</b>: R$ <span class="total-product">137,80</span></p>
+                            <p><b>TOTAL ITENS</b>: R$ <span class="total-product"><?= $subTotal;?></span></p>
 
                             <div class="send get-send-product">
                                 <p><b>FORMA DE ENTREGA</b></p>
@@ -171,7 +231,7 @@
                         </div>
 
                         <div class="order-total-payment ">
-                            <p><b>TOTAL À PAGAR</b>: R$ <span>137,80</span></p>
+                            <p><b>TOTAL À PAGAR</b>: R$ <span><?= $subTotal?></span></p>
                             <div class="send mt-30">
                                 <p>O seu pedido será registrado em nosso sistema e enviado para o WhatsApp da nossa
                                     loja.
@@ -189,7 +249,10 @@
                 <input type="hidden" name="total_orders">
                 <input type="submit" name="finishedOrders" value="Finalizar compra" class="btn-finished">
             </div>
+            </form>
         </div>
     </div>
-    <!--FOOTER --->
-<?php require("inc/footer.php"); ?>
+<?php
+endif;
+?>
+<!--FOOTER --->
