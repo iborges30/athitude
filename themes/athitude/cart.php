@@ -1,6 +1,4 @@
-<?php $v->layout("_theme");
-
-;?>
+<?php $v->layout("_theme");?>
 
 <div class="container">
     <div class="row">

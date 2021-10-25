@@ -70,4 +70,6 @@ class ProductsCategories extends Model
 
         return true;
     }
+
+
 }

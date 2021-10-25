@@ -39,6 +39,7 @@ class Web extends Controller
 
         (new Access())->report();
         (new Online())->report();
+
     }
 
     /**
@@ -78,16 +79,63 @@ WHERE
             "head" => $head,
             "enterprise" => $this->enterprise(),
             "paginator" => $pager->render(),
+            "category" => $this->categories(),
             "products" => $products->order("products.id")->limit($pager->limit())->offset($pager->offset())->fetch(true),
         ]);
     }
 
+
+    //TRAZ A CATEGOTIA LIGADA AO PRODUTO
+    public function category(?array $data): void
+    {
+
+        $category = (new ProductsCategories())->find("slug = :s", "s={$data["slug"]}")->fetch();
+        $products = (new Products())->findCustom("
+        SELECT
+	products.name,
+	products.image,
+	products.price,
+	products.url,
+	products.status,
+	inventory.amount 
+FROM
+	products,
+	inventory 
+WHERE
+	inventory.amount >= 1 AND products.id = inventory.product_id AND products.price > 1 AND products.status = 'active' AND category_id = :di", "di={$category->id}");
+
+
+
+        $pager = new Pager(url("/categoria/{$category->slug}/"));
+        $pager->pager($products->count(), 20, (!empty($data["page"]) ? $data["page"] : 1));
+
+        $head = $this->seo->render(
+            CONF_SITE_NAME . " Categoria: " . $category->category,
+            CONF_SITE_DESC,
+            url(),
+            theme("/assets/images/share.jpg")
+        );
+
+        echo $this->view->render("category", [
+            "head" => $head,
+            "enterprise" => $this->enterprise(),
+            "category" => $category,
+            "products" => $products->order("name ASC")->limit($pager->limit())->offset($pager->offset())->fetch(true),
+            "paginator" => $pager->render(),
+        ]);
+    }
 
     //RETORNA OS DADOS DA EMPRESA
     public function enterprise()
     {
         $enterpise = (new Enterprises())->findById(1);
         return $_SESSION["enterprise"] = $enterpise;
+    }
+
+
+    public function categories()
+    {
+        return $category = (new ProductsCategories())->find()->fetch(true);
     }
 
 
@@ -198,7 +246,8 @@ WHERE
 
         echo $this->view->render("cart", [
             "head" => $head,
-            "enterprise" => $this->enterprise()
+            "enterprise" => $this->enterprise(),
+            "category"=>$this->categories()
         ]);
     }
 
@@ -295,7 +344,8 @@ WHERE
             "session" => $session,
             "enterprise" => $this->enterprise(),
             'installments' => $installments,
-            "subTotal" => $cartTotal
+            "subTotal" => $cartTotal,
+            "category"=>$this->categories()
         ]);
     }
 
@@ -397,15 +447,13 @@ WHERE
         }
 
         //DADOS DA MENSAGEM
-        $json["name"] =  $data["name"] ;
-        $json["document"] =  $data["document"] ;
-        $json["numberOrder"] =  $order->id;
+        $json["name"] = $data["name"];
+        $json["document"] = $data["document"];
+        $json["numberOrder"] = $order->id;
         $json["method"] = paymentMethod($data["payment_method"]);
 
 
         $json["phone"] = "65996622520";
-
-
 
 
         $json["completed"] = true;

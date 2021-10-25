@@ -27,25 +27,6 @@ $nav = function ($title, $icon, $navItems) use ($app) {
             </li>";
 };
 
-// Control
-echo $nav("Control", "fas fa-fw fa-tachometer-alt", [
-    "Controle" => "control/home",
-    "Assinaturas" => "control/subscriptions",
-    "Planos" => "control/plans",
-]);
-
-// Blog
-echo $nav("Blog", "fas fa-fw fa-blog", [
-    "Artigos" => "blog/home",
-    "Categorias" => "blog/categories",
-    "Novo Artigo" => "blog/post",
-]);
-
-// FAQs
-echo $nav("FAQs", "fas fa-fw fa-comment", [
-    "Canais" => "faq/home",
-    "Novo Canal" => "faq/channel"
-]);
 
 // Usuários
 echo $nav("Usuários", "fas fa-fw fa-user", [

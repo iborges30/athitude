@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=0">
     <?= $head; ?>
-    <link rel="base" href="<?= url();?>"/>
+    <link rel="base" href="<?= url(); ?>"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,32 @@
 
 </head>
 <body>
+<div class="container jsc-nav ds-none">
+    <nav class="navegation-mobile-list">
+        <p class="roboto text-dark title-menu icon-link">CATEGORIAS</p>
+        <ul>
+            <li><a href="#" class="roboto text-dark">HOME</a>
+            </li>
+            <?php
+            if ($category):
+            foreach ($category as $c):
+            ?>
+
+            <li><a href="<?= url("/categoria/{$c->slug}");?>" class="roboto text-dark"><?=$c->category;?> </a>
+                <?php
+                endforeach;
+                endif;
+                ?>
+        </ul>
+
+        <div class="social-media">
+            <p class="roboto text-dark title-menu icon-link">CANAIS DE ATENDIMENTO</p>
+            <a href="https://www.facebook.com/euusodarluck/" class="roboto text-dark icon-facebook"></a>
+            <a href="https://www.instagram.com/darluck2013" class="roboto text-dark icon-instagram"></a>
+            <a href="https://wa.me/6599254550" class="roboto text-dark icon-whatsapp"></a>
+        </div>
+    </nav>
+</div>
 
 <div class="all bg-top">
     <div class="container">
@@ -44,8 +70,8 @@
     <div class="row">
         <div class="col-1">
             <div class="logo center">
-                <a href="<?= url();?>">
-                    <img src="<?= theme("/assets/images/logo.jpg", CONF_VIEW_THEME);?>" alt="Logo">
+                <a href="<?= url(); ?>">
+                    <img src="<?= theme("/assets/images/logo.jpg", CONF_VIEW_THEME); ?>" alt="Logo">
                 </a>
             </div>
         </div>
@@ -62,9 +88,9 @@
                 <div class="footer">
                     <p class="poppins text-default">
 
-                        <?= $enterprise->enterprise;?> - CNPJ:
-                        nº <?= formatDocument($enterprise->document);?>
-                        - <?= $enterprise->city;?> - <?= $enterprise->state;?></p>
+                        <?= $enterprise->enterprise; ?> - CNPJ:
+                        nº <?= formatDocument($enterprise->document); ?>
+                        - <?= $enterprise->city; ?> - <?= $enterprise->state; ?></p>
                 </div>
             </div>
         </div>

@@ -38,6 +38,14 @@ $(function () {
         return false;
     });
 
+    /***********************************
+     * ***** MENU MOBILE ***************
+     ***********************************/
+
+    $('.open-menu label').click(function () {
+        $('.jsc-nav').fadeToggle('fast');
+    });
+
     //FECHA A MODAL DE PRODUTO
     $(".dialog").on("click", ".jsc-back", function () {
         var url = BASE + '/remove-session';
@@ -408,9 +416,9 @@ $(function () {
                 if (response.completed) {
                     message("Tudo certo.", "Seu pedido foi cadastrado com sucesso. Você será redirecionado para o WhatsApp da Loja para finalizar o pagamento.", "green");
 
-                    window.setTimeout(function (){
-                        location.href = "https://api.whatsapp.com/send?phone=55"+response.phone+"&text="+messageWhatsApp(response.name, response.document, response.numberOrder, response.method);
-                    },3000);
+                    window.setTimeout(function () {
+                        location.href = "https://api.whatsapp.com/send?phone=55" + response.phone + "&text=" + messageWhatsApp(response.name, response.document, response.numberOrder, response.method);
+                    }, 3000);
 
                 }
 
@@ -424,6 +432,9 @@ $(function () {
     });
 
 
+
+
+
     function message(title, message, type) {
         $.alert({
             title: title,
@@ -435,6 +446,11 @@ $(function () {
             theme: 'modern',
         });
     }
+
+
+        /*******************************
+        *******  PARTE DA ENTREGA  *****
+        ********************************/
 
     function messageWhatsApp(name, document, numberOrder, method) {
         var message = "Olá, " + name + "  ," +
@@ -450,7 +466,12 @@ $(function () {
         return message;
     }
 
-    //MASCARAS
+    /*******************************
+     ********************************
+     ******* MASCÁRAS  **************
+     ********************************
+     ********************************/
+
     $(".mask-zipcode").mask("99999-999");
     $(".mask-document").mask("999.999.999-99");
     $(".mask-phone").mask("(99) 9 9999-9999");

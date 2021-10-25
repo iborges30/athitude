@@ -1,7 +1,6 @@
 <?php $v->layout("_theme"); ?>
 
 <?php
-var_dump($_SESSION["cart"]);
 if (!empty($_SESSION["cart"])):
     ?>
     <div class="dialog-complete">

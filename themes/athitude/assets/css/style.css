@@ -5,11 +5,16 @@
     overflow: auto;
     position: fixed;
     top: 0;
-    right: 0;
+   left: 0;
     width: 300px;
-    box-shadow: 2px 0 3px 0 rgba(0, 0, 0, .7);
+    box-shadow: 2px 0 3px 0 rgba(0, 0, 0, .1);
     color: #fff;
     z-index: 99
+}
+.social-media {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .title-menu {

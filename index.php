@@ -22,6 +22,8 @@ $route->get("/", "Web:home");
 $route->get("/{page}", "Web:home");
 $route->get("/pedidos/cart", "Web:cart");
 $route->get("/cliente/checkout", "Web:checkout");
+$route->get("/categoria/{slug}", "Web:category");
+$route->get("/categoria/{slug}/{page}", "Web:category");
 
 
 $route->post("/single/modal", "Web:single");
